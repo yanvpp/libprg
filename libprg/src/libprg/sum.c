@@ -1,4 +1,4 @@
-#include <libprg/sum.h>
+#include <libprg/libprg.h>
 
 result_t sum(double a, double b){
     result_t res;

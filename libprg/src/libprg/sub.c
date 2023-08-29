@@ -1,4 +1,4 @@
-#include <libprg/sub.h>
+#include <libprg/libprg.h>
 
 result_t sub(double a, double b){
     result_t res;

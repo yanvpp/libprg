@@ -1,6 +1,4 @@
 #include "libprg/libprg.h"
-#include "libprg/sum.h"
-#include "libprg/sub.h"
 
 result_t compute(double a, double b, operation_t op){
 

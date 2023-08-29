@@ -14,10 +14,7 @@ An example to demonstrate how to organize files for writing a library in the C l
     `-- src
         |-- include
         |   `-- libprg
-        |       |-- libprg.h
-        |       |-- mytypes.h
-        |       |-- sub.h
-        |       `-- sum.h
+        |       `-- libprg.h
         `-- libprg
             |-- libprg.c
             |-- sub.c
@@ -56,7 +53,6 @@ target_link_libraries(myapp PUBLIC libprg)
 And your `main.c`  should look like this:
 ```c
 #include <stdio.h>
-#include <libprg/mytypes.h>
 #include <libprg/libprg.h>
 
 int main(void) {
