@@ -27,7 +27,7 @@ CMake [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.htm
 
 Create a new project (C executable) using CMake and your `CMakeLists.txt` file should look like this:
 
-```cpp
+```cmake
 cmake_minimum_required(VERSION 3.21)
 project(myapp C)
 
