@@ -52,3 +52,12 @@ int topo_pilha(pilha_t *p)
     }
 }
 
+int* listar_pilha(pilha_t *p)
+{
+    int* cc = malloc(sizeof(int) * (p->topo + 1));
+    for (int i = 0; i <= p->topo; i++)
+    {
+        cc[i] = p->elementos[i];
+    }
+    return cc;
+}
