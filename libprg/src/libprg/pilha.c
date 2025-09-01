@@ -25,3 +25,17 @@ int empilhar_pilha(pilha_t *p, int valor)
         return 0;
     }
 }
+
+int desempilhar_pilha(pilha_t *p)
+{
+    if (p->topo >= 0)
+    {
+        int elemento = p->elementos[p->topo];
+        p->topo--;
+        return elemento;
+    }
+    else
+    {
+        return -1;
+    }
+}
