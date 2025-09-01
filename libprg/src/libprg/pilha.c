@@ -61,3 +61,15 @@ int* listar_pilha(pilha_t *p)
     }
     return cc;
 }
+
+int tamanho_pilha(pilha_t *p)
+{
+    if (p->topo >= 0)
+    {
+        return p->topo + 1;
+    }
+    else
+    {
+        return -1;
+    }
+}
