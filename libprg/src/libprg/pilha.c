@@ -73,3 +73,9 @@ int tamanho_pilha(pilha_t *p)
         return -1;
     }
 }
+
+void destruir_pilha(pilha_t *p)
+{
+    free(p->elementos);
+    free(p);
+}
