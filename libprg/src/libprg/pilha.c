@@ -39,3 +39,16 @@ int desempilhar_pilha(pilha_t *p)
         return -1;
     }
 }
+
+int topo_pilha(pilha_t *p)
+{
+    if (p->topo >= 0)
+    {
+        return p->elementos[p->topo];
+    }
+    else
+    {
+        return -1;
+    }
+}
+
