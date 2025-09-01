@@ -1,24 +1,26 @@
 cmake_minimum_required(VERSION 4.00)
-project(laboratorio C)
+project(libprg C)
 
 set(CMAKE_C_STANDARD 17)
 
-include(FetchContent)
-
-FetchContent_Declare(
-        libprg
-        GIT_REPOSITORY https://github.com/yanvpp/libprg.git
-        GIT_TAG origin/main
-        # or GIT_TAG 0.0.1
-
-        # You can reference a local directory instead
-        # URL file:///${CMAKE_CURRENT_SOURCE_DIR}/../libprg
+set(HEADERS
+        "${CMAKE_CURRENT_LIST_DIR}/src/include/libprg/libprg.h"
 )
-FetchContent_MakeAvailable(libprg)
 
-add_executable(laboratorio main.c
-        laboratorios/lab_2/lab_2.c
-        laboratorios/lab_2/header/libprg.h)
+set(SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/src/libprg/pilha.c"
+        src/include/libprg/libprg.h
+)
 
-# linking libprg
-target_link_libraries(laboratorio PUBLIC libprg)
+add_library(libprg ${SOURCES})
+
+target_include_directories(libprg PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src/include")
+
+source_group(
+        TREE "${CMAKE_CURRENT_LIST_DIR}/src/include"
+        PREFIX "Header Files"
+        FILES ${HEADERS}
+)
+
+install(TARGETS libprg DESTINATION lib)
+install(FILES ${HEADERS} DESTINATION include)
