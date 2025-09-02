@@ -16,4 +16,6 @@ int *listar_pilha(pilha_t *p);
 int tamanho_pilha(pilha_t *p);
 void destruir_pilha(pilha_t *p);
 
+void exercicio_2();
+
 #endif //LABORATORIO_LIBPRG_H
