@@ -1,6 +1,8 @@
 #ifndef LABORATORIO_LIBPRG_H
 #define LABORATORIO_LIBPRG_H
+#include <stdbool.h>
 
+//PILHA
 typedef struct pilha
 {
     int *elementos;
@@ -15,5 +17,18 @@ int topo_pilha(pilha_t *p);
 int *listar_pilha(pilha_t *p);
 int tamanho_pilha(pilha_t *p);
 void destruir_pilha(pilha_t *p);
+
+//FILA
+typedef struct fila {
+    int* elementos;
+    int tamanho;
+    int capacidade;
+    int inicio;
+    int fim;
+}fila_t;
+
+fila_t* criar_fila(int capacidade);
+void enfileirar(fila_t* fila, int valor);
+bool fila_cheia(fila_t f);
 
 #endif //LABORATORIO_LIBPRG_H
