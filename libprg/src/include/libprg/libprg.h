@@ -2,7 +2,7 @@
 #define LABORATORIO_LIBPRG_H
 #include <stdbool.h>
 
-//PILHA
+//|-- PILHA --|
 typedef struct pilha
 {
     int *elementos;
@@ -18,7 +18,7 @@ int *listar_pilha(pilha_t *p);
 int tamanho_pilha(pilha_t *p);
 void destruir_pilha(pilha_t *p);
 
-//FILA
+//|-- FILA --|
 typedef struct fila {
     int* elementos;
     int tamanho;
