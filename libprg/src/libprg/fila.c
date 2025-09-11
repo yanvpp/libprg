@@ -16,7 +16,6 @@ fila_t *criar_fila(int capacidade) {
 }
 
 void enfileirar(fila_t *f, int valor) {
-    f->elementos[f->fim] = valor;
 
     if (fila_cheia(f) && f->inicio == 0) {
         exit(EXIT_FAILURE);
@@ -24,6 +23,7 @@ void enfileirar(fila_t *f, int valor) {
         f->fim = (f->fim + 1) % f->capacidade;
         exit(EXIT_SUCCESS);
     } else {
+        f->elementos[f->fim] = valor;
         f->fim++;
     }
 }
