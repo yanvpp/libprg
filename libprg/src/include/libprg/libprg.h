@@ -29,6 +29,8 @@ typedef struct fila {
 
 fila_t* criar_fila(int capacidade);
 void enfileirar(fila_t* fila, int valor);
+
+int inicio_fila(fila_t *f);
 bool fila_cheia(fila_t f);
 
 #endif //LABORATORIO_LIBPRG_H
