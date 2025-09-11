@@ -47,11 +47,13 @@ int inicio_fila(fila_t *f) {
     return -1;
 }
 
-//
-// fim_fila{
-//
-// }
-//
+int fim_fila(fila_t *f){
+    if (!fila_vazia(f)) {
+        return f->elementos[f->fim];
+    }
+    return -1;
+}
+
 // tamanho_fila{
 //
 // }
