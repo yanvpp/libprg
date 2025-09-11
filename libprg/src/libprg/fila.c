@@ -39,9 +39,13 @@ int desenfileirar(fila_t *f) {
     }
 }
 
-// inicio_fila{
-//
-// }
+int inicio_fila(fila_t *f) {
+    if (f->inicio >= 0) {
+        return f->elementos[f->inicio];
+    }
+    return -1;
+}
+
 //
 // fim_fila{
 //
