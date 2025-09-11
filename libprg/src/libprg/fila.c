@@ -20,7 +20,6 @@ void enfileirar(fila_t *f, int valor) {
 
     if (fila_cheia(f) && f->inicio == 0) {
         exit(EXIT_FAILURE);
-        //
     } else if (fila_cheia(f) && f->inicio != 0) {
         f->fim = (f->fim + 1) % f->capacidade;
         exit(EXIT_SUCCESS);
@@ -54,10 +53,17 @@ int fim_fila(fila_t *f){
     return -1;
 }
 
-// tamanho_fila{
-//
-// }
-//
+int tamanho_fila(fila_t *f){
+    if (fila_vazia(f)) {
+        return 0;
+    } else if (fila_cheia(f)) {
+        return f->capacidade;
+    } else if ((f->fim > f->inicio) || (f->fim == f->inicio)) {
+        return f->fim;
+    }
+    return f->inicio;
+}
+
 bool fila_cheia(fila_t *f) {
     return f->tamanho >= f->capacidade;
 }
