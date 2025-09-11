@@ -15,18 +15,21 @@ fila_t *criar_fila(int capacidade) {
     return f;
 }
 
-void enfileirar(fila_t* f, int valor){
+void enfileirar(fila_t *f, int valor) {
     f->elementos[f->fim] = valor;
 
     if (fila_cheia(*f) && f->inicio == 0) {
         exit(EXIT_FAILURE);
-        //f->fim = (f->fim + 1) % f->capacidade;
+        //
+    } else if (fila_cheia(*f) && f->inicio != 0) {
+        f->fim = (f->fim + 1) % f->capacidade;
+        exit(EXIT_SUCCESS);
     } else {
         f->fim++;
     }
 }
 
-int desenfileirar(fila_t* f){
+int desenfileirar(fila_t *f) {
     if (!fila_cheia(*f)) {
         int elemento = f->elementos[f->inicio];
         f->inicio++;
@@ -48,7 +51,7 @@ int desenfileirar(fila_t* f){
 //
 // }
 //
-bool fila_cheia(fila_t f){
+bool fila_cheia(fila_t f) {
     return f.tamanho >= f.capacidade;
 }
 
