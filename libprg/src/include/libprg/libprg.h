@@ -35,5 +35,6 @@ bool fila_cheia(fila_t *f);
 bool fila_vazia(fila_t *f);
 int fim_fila(fila_t *f);
 int tamanho_fila(fila_t *f);
+void destruir_fila(fila_t *f);
 
 #endif //LABORATORIO_LIBPRG_H
