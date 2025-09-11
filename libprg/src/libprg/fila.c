@@ -72,6 +72,7 @@ bool fila_vazia(fila_t *f) {
     return f->tamanho < f->capacidade;
 }
 
-// destruir_fila{
-//
-// }
+void destruir_fila(fila_t *f){
+    free(f->elementos);
+    free(f);
+}
