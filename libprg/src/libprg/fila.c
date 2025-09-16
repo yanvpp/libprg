@@ -8,6 +8,7 @@ fila_t *criar_fila(int capacidade) {
 
     f->elementos = malloc(capacidade * sizeof(int));
     f->inicio = 0;
+    f->tamanho = 0;
     f->fim = 0;
     f->capacidade = capacidade;
 
@@ -16,26 +17,20 @@ fila_t *criar_fila(int capacidade) {
 
 void enfileirar(fila_t *f, int valor) {
 
-    if (fila_cheia(f) && f->inicio == 0) {
+    if (fila_cheia(f)) {
         exit(EXIT_FAILURE);
-    } else if (fila_cheia(f) && f->inicio != 0) {
-        f->fim = (f->fim + 1) % f->capacidade;
-        exit(EXIT_SUCCESS);
-    } else {
-        f->elementos[f->fim] = valor;
-        f->fim++;
     }
+    f->elementos[f->fim] = valor;
+    f->fim;
+    f->tamanho++;
 }
 
-int desenfileirar(fila_t *f) {
-    if ((f->inicio < f->capacidade) && !fila_vazia(f)) {
-        int elemento = f->elementos[f->inicio];
-        f->inicio++;
-        return elemento;
-    } else if (f->inicio == f->capacidade) {
-        return f->inicio = (f->inicio + 1) % f->capacidade;
+void desenfileirar(fila_t *f) {
+    if (fila_vazia(f)) {
+        exit(EXIT_FAILURE);
     }
-    return -1;
+    f->inicio++;
+    f->tamanho--;
 }
 
 int inicio_fila(fila_t *f) {
@@ -64,11 +59,11 @@ int tamanho_fila(fila_t *f){
 }
 
 bool fila_cheia(fila_t *f) {
-    return (f->fim + 1) % f->capacidade == f->inicio;
+    return f->tamanho == f->capacidade;
 };
 
 bool fila_vazia(fila_t *f) {
-    return f->inicio == f->fim;
+    return f->tamanho == 0;
 }
 
 void destruir_fila(fila_t *f){
