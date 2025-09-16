@@ -48,4 +48,6 @@ lista_linear_t *criar_lista_linear(int capacidade);
 bool lista_linear_cheia(lista_linear_t *ll);
 void inserir_na_lista_linear(lista_linear_t *ll, int valor);
 
+void destruir_lista_linear(lista_linear_t *ll);
+
 #endif //LABORATORIO_LIBPRG_H
