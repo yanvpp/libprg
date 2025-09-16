@@ -37,4 +37,15 @@ bool fila_cheia(fila_t *f);
 bool fila_vazia(fila_t *f);
 void destruir_fila(fila_t *f);
 
+//|-- LISTA LINEAR --|
+typedef struct lista_linear {
+    int *elementos;
+    int tamanho;
+    int capacidade;
+}lista_linear_t;
+
+lista_linear_t *criar_lista_linear(int capacidade);
+bool lista_linear_cheia(lista_linear_t *ll);
+void inserir_na_lista_linear(lista_linear_t *ll, int valor);
+
 #endif //LABORATORIO_LIBPRG_H
