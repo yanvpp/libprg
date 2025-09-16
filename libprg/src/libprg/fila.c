@@ -25,6 +25,7 @@ void enfileirar(fila_t *f, int valor) {
     } else {
         f->elementos[f->fim] = valor;
         f->fim++;
+        f->tamanho++;
     }
 }
 
@@ -32,6 +33,7 @@ int desenfileirar(fila_t *f) {
     if ((f->inicio < f->capacidade) && !fila_vazia(f)) {
         int elemento = f->elementos[f->inicio];
         f->inicio++;
+        f->tamanho--;
         return elemento;
     } else if (f->inicio == f->capacidade) {
         return f->inicio = (f->inicio + 1) % f->capacidade;
