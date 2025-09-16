@@ -16,3 +16,7 @@ lista_linear_t *criar_lista_linear(int capacidade) {
 
     return ll;
 }
+
+bool lista_linear_cheia(lista_linear_t *ll) {
+    return ll->tamanho == ll->capacidade;
+}
