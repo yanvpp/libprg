@@ -21,7 +21,6 @@ void destruir_pilha(pilha_t *p);
 //|-- FILA --|
 typedef struct fila {
     int* elementos;
-    int tamanho;
     int capacidade;
     int inicio;
     int fim;
