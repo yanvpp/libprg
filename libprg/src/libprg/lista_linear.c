@@ -21,10 +21,18 @@ bool lista_linear_cheia(lista_linear_t *ll) {
     return ll->tamanho == ll->capacidade;
 }
 
+bool lista_linear_vazia(lista_linear_t *ll) {
+    return ll->tamanho = 0;
+}
+
 void inserir_na_lista_linear(lista_linear_t *ll, int valor) {
     if (lista_linear_cheia(ll)) {
         exit(EXIT_FAILURE);
     }
     ll->elementos[ll->tamanho] = valor;
     ll->tamanho++;
+}
+
+void buscar_na_lista_linear(lista_linear_t *ll, int valor) {
+
 }
