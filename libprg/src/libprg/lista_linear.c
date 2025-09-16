@@ -43,3 +43,10 @@ int buscar_na_lista_linear(lista_linear_t *ll, int valor) {
     }
     return -1;
 }
+
+//remover_na_lista_linear(lista_linear_t *ll, int valor){}
+
+void destruir_lista_linear(lista_linear_t *ll) {
+    free(ll->elementos);
+    free(ll);
+}
