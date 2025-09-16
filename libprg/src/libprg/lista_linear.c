@@ -20,3 +20,11 @@ lista_linear_t *criar_lista_linear(int capacidade) {
 bool lista_linear_cheia(lista_linear_t *ll) {
     return ll->tamanho == ll->capacidade;
 }
+
+void inserir_na_lista_linear(lista_linear_t *ll, int valor) {
+    if (lista_linear_cheia(ll)) {
+        exit(EXIT_FAILURE);
+    }
+    ll->elementos[ll->tamanho] = valor;
+    ll->tamanho++;
+}
