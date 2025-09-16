@@ -33,6 +33,13 @@ void inserir_na_lista_linear(lista_linear_t *ll, int valor) {
     ll->tamanho++;
 }
 
-void buscar_na_lista_linear(lista_linear_t *ll, int valor) {
-
+int buscar_na_lista_linear(lista_linear_t *ll, int valor) {
+    if (!lista_linear_vazia(ll)) {
+        for (int index = 0; index < ll->tamanho; index++) {
+            if (ll->elementos[index] == valor) {
+                return index;
+            }
+        }
+    }
+    return -1;
 }
