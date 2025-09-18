@@ -7,12 +7,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-lista_linear_t *criar_lista_linear(int capacidade) {
+lista_linear_t *criar_lista_linear(int capacidade, bool ordenada) {
     lista_linear_t *ll = malloc(sizeof(lista_linear_t));
 
     ll->elementos = malloc(capacidade * sizeof(int));
     ll->tamanho = 0;
     ll->capacidade = capacidade;
+    ll->ordenada = ordenada;
 
     return ll;
 }
