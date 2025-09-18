@@ -52,20 +52,5 @@ int buscar_na_lista_linear(lista_linear_t *ll, int valor);
 void remover_da_lista_linear(lista_linear_t *ll, int valor);
 void destruir_lista_linear(lista_linear_t *ll);
 
-//|-- LISTA ORDENADA --|
-typedef struct lista_ordenada {
-    int *elementos;
-    int tamanho;
-    int capacidade;
-}lista_ordenada_t;
-
-lista_ordenada_t *criar_lista_ordenada(int capacidade);
-bool lista_ordenada_cheia(lista_ordenada_t *lo);
-bool lista_ordenada_vazia(lista_ordenada_t *lo);
-void inserir_na_lista_ordenada(lista_ordenada_t *lo, int valor);
-int buscar_na_lista_ordenada(lista_ordenada_t *lo, int valor);
-void remover_da_lista_ordenada(lista_ordenada_t *lo, int valor);
-void destruir_lista_ordenada(lista_ordenada_t *lo);
-
 
 #endif //LABORATORIO_LIBPRG_H
