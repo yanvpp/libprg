@@ -44,7 +44,14 @@ int buscar_na_lista_linear(lista_linear_t *ll, int valor) {
     return -1;
 }
 
-//remover_na_lista_linear(lista_linear_t *ll, int valor){}
+void remover_da_lista_linear(lista_linear_t *ll, int valor) {
+    int index;
+
+    if (lista_linear_vazia(ll)) {
+        index = buscar_na_lista_linear(ll, valor);
+        ll->elementos[index] = ll->elementos[ll->tamanho];
+    }
+}
 
 void destruir_lista_linear(lista_linear_t *ll) {
     free(ll->elementos);
