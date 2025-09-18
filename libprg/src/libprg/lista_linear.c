@@ -7,37 +7,42 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-lista_linear_t *criar_lista_linear(int capacidade, bool ordenada) {
-    lista_linear_t *ll = malloc(sizeof(lista_linear_t));
+lista_t *criar_lista(int capacidade, bool ordenada) {
+    lista_t *l = malloc(sizeof(lista_t));
 
-    ll->elementos = malloc(capacidade * sizeof(int));
-    ll->tamanho = 0;
-    ll->capacidade = capacidade;
-    ll->ordenada = ordenada;
+    l->elementos = malloc(capacidade * sizeof(int));
+    l->tamanho = 0;
+    l->capacidade = capacidade;
+    l->ordenada = ordenada;
 
-    return ll;
+    return l;
 }
 
-bool lista_linear_cheia(lista_linear_t *ll) {
-    return ll->tamanho == ll->capacidade;
+bool lista_cheia(lista_t *l) {
+    return l->tamanho == l->capacidade;
 }
 
-bool lista_linear_vazia(lista_linear_t *ll) {
-    return ll->tamanho = 0;
+bool lista_vazia(lista_t *l) {
+    return l->tamanho = 0;
 }
 
-void inserir_na_lista_linear(lista_linear_t *ll, int valor) {
-    if (lista_linear_cheia(ll)) {
+void inserir_na_lista(lista_t *l, int valor) {
+    if (lista_cheia(l)) {
         exit(EXIT_FAILURE);
     }
-    ll->elementos[ll->tamanho] = valor;
-    ll->tamanho++;
+
+    if () {
+
+    }
+
+    l->elementos[l->tamanho] = valor;
+    l->tamanho++;
 }
 
-int buscar_na_lista_linear(lista_linear_t *ll, int valor) {
-    if (!lista_linear_vazia(ll)) {
-        for (int index = 0; index < ll->tamanho; index++) {
-            if (ll->elementos[index] == valor) {
+int buscar_na_lista(lista_t *l, int valor) {
+    if (!lista_vazia(l)) {
+        for (int index = 0; index < l->tamanho; index++) {
+            if (l->elementos[index] == valor) {
                 return index;
             }
         }
@@ -45,16 +50,16 @@ int buscar_na_lista_linear(lista_linear_t *ll, int valor) {
     return -1;
 }
 
-void remover_da_lista_linear(lista_linear_t *ll, int valor) {
+void remover_da_lista(lista_t *l, int valor) {
     int index;
 
-    if (lista_linear_vazia(ll)) {
-        index = buscar_na_lista_linear(ll, valor);
-        ll->elementos[index] = ll->elementos[ll->tamanho];
+    if (lista_vazia(l)) {
+        index = buscar_na_lista(l, valor);
+        l->elementos[index] = l->elementos[l->tamanho];
     }
 }
 
-void destruir_lista_linear(lista_linear_t *ll) {
-    free(ll->elementos);
-    free(ll);
+void destruir_lista(lista_t *l) {
+    free(l->elementos);
+    free(l);
 }

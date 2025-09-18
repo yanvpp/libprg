@@ -43,15 +43,15 @@ typedef struct lista_linear {
     int tamanho;
     int capacidade;
     bool ordenada;
-}lista_linear_t;
+}lista_t;
 
-lista_linear_t *criar_lista_linear(int capacidade, bool ordenada);
-bool lista_linear_cheia(lista_linear_t *ll);
-bool lista_linear_vazia(lista_linear_t *ll);
-void inserir_na_lista_linear(lista_linear_t *ll, int valor);
-int buscar_na_lista_linear(lista_linear_t *ll, int valor);
-void remover_da_lista_linear(lista_linear_t *ll, int valor);
-void destruir_lista_linear(lista_linear_t *ll);
+lista_t *criar_lista_linear(int capacidade, bool ordenada);
+bool lista_cheia(lista_t *l);
+bool lista_vazia(lista_t *l);
+void inserir_na_lista(lista_t *l, int valor);
+int buscar_na_lista(lista_t *l, int valor);
+void remover_da_lista(lista_t *l, int valor);
+void destruir_lista(lista_t *l);
 
 
 #endif //LABORATORIO_LIBPRG_H
