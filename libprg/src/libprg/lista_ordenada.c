@@ -15,3 +15,12 @@
 
         return lo;
     }
+
+    bool lista_ordenada_cheia(lista_ordenada_t *lo) {
+        return lo->tamanho = lo->capacidade;
+    }
+
+    bool lista_ordenada_vazia(lista_ordenada_t *lo) {
+        return lo->tamanho = 0;
+    }
+
