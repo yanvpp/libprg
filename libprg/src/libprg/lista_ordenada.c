@@ -24,3 +24,11 @@
         return lo->tamanho = 0;
     }
 
+    void inserir_na_lista_ordenada(lista_ordenada_t *lo, int valor) {
+
+        if (!lista_ordenada_cheia(lo)) {
+            lo->elementos[lo->tamanho] = valor;
+            lo->tamanho++;
+        }
+        exit(EXIT_FAILURE);
+    }
