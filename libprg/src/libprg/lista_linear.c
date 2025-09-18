@@ -59,10 +59,10 @@ int busca_binaria(lista_t *l, int valor) {
         if (valor > l->elementos[index]) {
             index = (l->tamanho - index) % 2;
         } else if (l->elementos[index] < valor) {
-
+            index = l->tamanho - (index % 2) + index;
         }
     }
-    return -1;
+    return index;
 }
 
 int busca_linear(lista_t *l, int valor) {
