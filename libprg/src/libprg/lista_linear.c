@@ -26,17 +26,32 @@ bool lista_vazia(lista_t *l) {
     return l->tamanho = 0;
 }
 
+void inserir_na_lista_nao_ordenada(lista_t *l, int valor) {
+    l->elementos[l->tamanho] = valor;
+    l->tamanho++;
+}
+
+void inserir_na_lista_ordenada(lista_t *l, int valor) {
+    for (int i = l->tamanho - 1; i >= 0; i--) {
+        if (l->elementos[i] < valor) {
+            l->elementos[i+1] = valor;
+            break;
+        }
+        l->elementos[i+1] = l->elementos[i];
+    }
+    l->tamanho++;
+}
+
 void inserir_na_lista(lista_t *l, int valor) {
     if (lista_cheia(l)) {
         exit(EXIT_FAILURE);
     }
 
-    if () {
-
+    if (l->ordenada) {
+        inserir_na_lista_ordenada(l, valor);
+    } else {
+        inserir_na_lista_nao_ordenada(l, valor);
     }
-
-    l->elementos[l->tamanho] = valor;
-    l->tamanho++;
 }
 
 int buscar_na_lista(lista_t *l, int valor) {
