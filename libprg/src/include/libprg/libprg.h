@@ -65,7 +65,7 @@ typedef struct no {
 }no_t;
 
 no_t *criar_lista_encadeada(int valor);
-no_t *adicionar_na_lista_encadeada(no_t *inicio, int valor);
+no_t *adicionar_na_lista_encadeada(no_t **inicio, int valor);
 // remover
 void destruir_lista_encadeada(no_t *no);
 
