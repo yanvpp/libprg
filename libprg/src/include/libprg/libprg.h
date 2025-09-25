@@ -3,6 +3,7 @@
 #include <stdbool.h>
 
 //|-- PILHA --|
+
 typedef struct pilha
 {
     int *elementos;
@@ -19,6 +20,7 @@ int tamanho_pilha(pilha_t *p);
 void destruir_pilha(pilha_t *p);
 
 //|-- FILA --|
+
 typedef struct fila {
     int* elementos;
     int capacidade;
@@ -38,20 +40,33 @@ bool fila_vazia(fila_t *f);
 void destruir_fila(fila_t *f);
 
 //|-- LISTA LINEAR --|
+
 typedef struct lista_linear {
     int *elementos;
     int tamanho;
     int capacidade;
     bool ordenada;
-}lista_t;
+}lista_linear_t;
 
-lista_t *criar_lista_linear(int capacidade, bool ordenada);
-bool lista_cheia(lista_t *l);
-bool lista_vazia(lista_t *l);
-void inserir_na_lista(lista_t *l, int valor);
-int buscar_na_lista(lista_t *l, int valor);
-void remover_da_lista(lista_t *l, int valor);
-void destruir_lista(lista_t *l);
+lista_linear_t *criar_lista_linear(int capacidade, bool ordenada);
+bool lista_cheia(lista_linear_t *ll);
+bool lista_vazia(lista_linear_t *ll);
+void inserir_na_lista(lista_linear_t *ll, int valor);
+int buscar_na_lista(lista_linear_t *ll, int valor);
+void remover_da_lista(lista_linear_t *ll, int valor);
+void destruir_lista(lista_linear_t *ll);
 
+// |-- LISTA ENCADEADA --|
+
+typedef struct no {
+    int valor;
+    int head;
+    struct no *proximo;
+}no_t;
+
+no_t *criar_lista_encadeada(int valor);
+no_t *adicionar_na_lista_encadeada(no_t *inicio, int valor);
+// remover
+void destruir_lista_encadeada(no_t *no);
 
 #endif //LABORATORIO_LIBPRG_H
