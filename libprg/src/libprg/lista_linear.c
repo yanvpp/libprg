@@ -7,90 +7,90 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-lista_t *criar_lista(int capacidade, bool ordenada) {
-    lista_t *l = malloc(sizeof(lista_t));
+lista_linear_t *criar_lista(int capacidade, bool ordenada) {
+    lista_linear_t *ll = malloc(sizeof(lista_linear_t));
 
-    l->elementos = malloc(capacidade * sizeof(int));
-    l->tamanho = 0;
-    l->capacidade = capacidade;
-    l->ordenada = ordenada;
+    ll->elementos = malloc(capacidade * sizeof(int));
+    ll->tamanho = 0;
+    ll->capacidade = capacidade;
+    ll->ordenada = ordenada;
 
-    return l;
+    return ll;
 }
 
-bool lista_cheia(lista_t *l) {
-    return l->tamanho == l->capacidade;
+bool lista_cheia(lista_linear_t *ll) {
+    return ll->tamanho == ll->capacidade;
 }
 
-bool lista_vazia(lista_t *l) {
-    return l->tamanho = 0;
+bool lista_vazia(lista_linear_t *ll) {
+    return ll->tamanho = 0;
 }
 
-void inserir_na_lista_nao_ordenada(lista_t *l, int valor) {
-    l->elementos[l->tamanho] = valor;
-    l->tamanho++;
+void inserir_na_lista_nao_ordenada(lista_linear_t *ll, int valor) {
+    ll->elementos[ll->tamanho] = valor;
+    ll->tamanho++;
 }
 
-void inserir_na_lista_ordenada(lista_t *l, int valor) {
-    for (int i = l->tamanho - 1; i >= 0; i--) {
-        if (l->elementos[i] < valor) {
-            l->elementos[i+1] = valor;
+void inserir_na_lista_ordenada(lista_linear_t *ll, int valor) {
+    for (int i = ll->tamanho - 1; i >= 0; i--) {
+        if (ll->elementos[i] < valor) {
+            ll->elementos[i+1] = valor;
             break;
         }
-        l->elementos[i+1] = l->elementos[i];
+        ll->elementos[i+1] = ll->elementos[i];
     }
-    l->tamanho++;
+    ll->tamanho++;
 }
 
-void inserir_na_lista(lista_t *l, int valor) {
-    if (!lista_cheia(l)) {
-        if (l->ordenada) {
-            inserir_na_lista_ordenada(l, valor);
+void inserir_na_lista(lista_linear_t *ll, int valor) {
+    if (!lista_cheia(ll)) {
+        if (ll->ordenada) {
+            inserir_na_lista_ordenada(ll, valor);
         } else {
-            inserir_na_lista_nao_ordenada(l, valor);
+            inserir_na_lista_nao_ordenada(ll, valor);
         }
     }
 }
 
-int busca_binaria(lista_t *l, int valor) {
-    int index = l->tamanho;
+int busca_binaria(lista_linear_t *ll, int valor) {
+    int index = ll->tamanho;
 
-    while (l->elementos[index] != valor) {
-        if (valor > l->elementos[index]) {
-            index = (l->tamanho - index) % 2;
-        } else if (l->elementos[index] < valor) {
-            index = l->tamanho - (index % 2) + index;
+    while (ll->elementos[index] != valor) {
+        if (valor > ll->elementos[index]) {
+            index = (ll->tamanho - index) % 2;
+        } else if (ll->elementos[index] < valor) {
+            index = ll->tamanho - (index % 2) + index;
         }
     }
     return index;
 }
 
-int busca_linear(lista_t *l, int valor) {
-    for (int index = 0; index < l->tamanho; index++) {
-        if (l->elementos[index] == valor) {
+int busca_linear(lista_linear_t *ll, int valor) {
+    for (int index = 0; index < ll->tamanho; index++) {
+        if (ll->elementos[index] == valor) {
             return index;
         }
         return -1;
     }
 }
 
-int buscar_na_lista(lista_t *l, int valor) {
-    if (!lista_vazia(l)) {
-        busca_binaria(l, valor);
+int buscar_na_lista(lista_linear_t *ll, int valor) {
+    if (!lista_vazia(ll)) {
+        busca_binaria(ll, valor);
     }
         return 0;
 }
 
-void remover_da_lista(lista_t *l, int valor) {
+void remover_da_lista(lista_linear_t *ll, int valor) {
     int index;
 
-    if (lista_vazia(l)) {
-        index = buscar_na_lista(l, valor);
-        l->elementos[index] = l->elementos[l->tamanho];
+    if (lista_vazia(ll)) {
+        index = buscar_na_lista(ll, valor);
+        ll->elementos[index] = ll->elementos[ll->tamanho];
     }
 }
 
-void destruir_lista(lista_t *l) {
-    free(l->elementos);
-    free(l);
+void destruir_lista(lista_linear_t *ll) {
+    free(ll->elementos);
+    free(ll);
 }
