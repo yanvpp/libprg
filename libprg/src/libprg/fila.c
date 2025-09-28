@@ -48,6 +48,15 @@ int fim_fila(fila_t *f){
 }
 
 int tamanho_fila(fila_t *f){
+    // if (fila_vazia(f)) {
+    //     return 0;
+    // } else if (fila_cheia(f)) {
+    //     return f->capacidade;
+    // } else if ((f->fim > f->inicio) || (f->fim == f->inicio)) {
+    //     return f->fim;
+    // }
+    // return f->inicio;
+
     return f->tamanho;
 }
 
