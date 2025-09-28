@@ -42,7 +42,7 @@ int inicio_fila(fila_t *f) {
 
 int fim_fila(fila_t *f){
     if (!fila_vazia(f)) {
-        return f->elementos[f->fim];
+        return f->elementos[f->fim - 1];
     }
     return -1;
 }
