@@ -18,7 +18,7 @@ bool lista_cheia(lista_linear_t *ll) {
 }
 
 bool lista_vazia(lista_linear_t *ll) {
-    return ll->tamanho = 0;
+    return ll->tamanho == 0;
 }
 
 void inserir_na_lista_nao_ordenada(lista_linear_t *ll, int valor) {
