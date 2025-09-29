@@ -32,15 +32,13 @@ void inserir_na_lista_nao_ordenada(lista_linear_t* ll, int valor)
 
 void inserir_na_lista_ordenada(lista_linear_t* ll, int valor)
 {
-    for (int i = ll->tamanho - 1; i > 0; i--)
+    int i;
+
+    for (i = ll->tamanho; i > 0 && ll->elementos[i - 1]; i--)
     {
-        if (ll->elementos[i] < valor)
-        {
-            ll->elementos[i + 1] = valor;
-            break;
-        }
-        ll->elementos[i + 1] = ll->elementos[i];
+        ll->elementos[i] = ll->elementos[i - 1];
     }
+    ll->elementos[i] = valor;
     ll->tamanho++;
 }
 
@@ -61,76 +59,81 @@ void inserir_na_lista(lista_linear_t* ll, int valor)
 
 int busca_binaria(lista_linear_t* ll, int valor)
 {
-    int index = ll->tamanho;
+    int inicio = 0, fim = ll->tamanho;
 
-    while (ll->elementos[index] != valor)
+    while (inicio <= fim)
     {
-        if (valor > ll->elementos[index])
+        int meio = inicio + (fim - inicio) / 2;
+        if (valor == ll->elementos[meio])
         {
-            index = (ll->tamanho - index) % 2;
+            return meio;
         }
-        else if (ll->elementos[index] < valor)
+        if (ll->elementos[meio] < valor)
         {
-            index = ll->tamanho - (index % 2) + index;
-        }
-    }
-    return index;
-}
-
-int busca_linear(lista_linear_t* ll, int valor)
-{
-    for (int index = 0; index < ll->tamanho; index++)
-    {
-        if (ll->elementos[index] == valor)
+            inicio = meio + 1;
+        } else
         {
-            return index;
+            fim = meio - 1;
         }
     }
     return -1;
 }
 
-int buscar_na_lista(lista_linear_t* ll, int valor)
-{
-    if (!lista_vazia(ll))
+    int busca_linear(lista_linear_t* ll, int valor)
     {
+        for (int index = 0; index < ll->tamanho; index++)
+        {
+            if (ll->elementos[index] == valor)
+            {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    int buscar_na_lista(lista_linear_t* ll, int valor)
+    {
+        if (!lista_vazia(ll))
+        {
+            if (ll->ordenada)
+            {
+                return busca_binaria(ll, valor);
+            }
+            return busca_linear(ll, valor);
+        }
+        return -1;
+    }
+
+    void remover_da_lista(lista_linear_t* ll, int valor)
+    {
+        if (lista_vazia(ll))
+        {
+            return;
+        }
+
+        int index = buscar_na_lista(ll, valor);
+
+        if (index == -1)
+        {
+            return;
+        }
+
         if (ll->ordenada)
         {
-            return busca_binaria(ll, valor);
+            for (int i = index; i < ll->tamanho - 1; i++)
+            {
+                ll->elementos[i] = ll->elementos[i + 1];
+            }
         }
-        return busca_linear(ll, valor);
-    }
-    return -1;
-}
-
-void remover_da_lista(lista_linear_t* ll, int valor)
-{
-    if (lista_vazia(ll))
-    {
-        return;
-    }
-
-    int index = buscar_na_lista(ll, valor);
-
-    if (index == -1)
-    {
-        return;
-    }
-
-    if (ll->ordenada)
-    {
-        for (int i = index; i < ll->tamanho; i++)
+        else
         {
-            ll->elementos[index] = ll->elementos[i + 1];
+            ll->elementos[index] = ll->elementos[ll->tamanho - 1];
         }
-    } else
-    {
-        ll->elementos[index] = ll->elementos[ll->tamanho - 1];
+        ll->tamanho--;
     }
-    ll->tamanho--;
-}
 
-void destruir_lista(lista_linear_t* ll)
-{
-    free(ll->elementos);
-    free(ll);
-}
+    void destruir_lista(lista_linear_t* ll)
+    {
+        free(ll->elementos);
+        free(ll);
+    }
