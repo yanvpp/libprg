@@ -39,6 +39,8 @@ void inserir_na_lista(lista_linear_t* ll, int valor);
 int buscar_na_lista(lista_linear_t* ll, int valor);
 void remover_da_lista(lista_linear_t* ll, int valor);
 int tamanho_lista_linear(lista_linear_t* ll);
+void listar_lista_linear(lista_linear_t *ll);
+int inicio_lista_linear(lista_linear_t *ll);
 void destruir_lista(lista_linear_t* ll);
 
 // |-- LISTA ENCADEADA --|

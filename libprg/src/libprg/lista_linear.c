@@ -153,6 +153,12 @@ int busca_binaria(lista_linear_t* ll, int valor)
         }
     }
 
+    int inicio_lista_linear(lista_linear_t *ll)
+    {
+        return ll->elementos[0];
+    }
+
+
     void destruir_lista(lista_linear_t* ll)
     {
         free(ll->elementos);
