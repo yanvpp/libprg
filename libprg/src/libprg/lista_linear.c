@@ -41,7 +41,7 @@ void inserir_na_lista_ordenada(lista_linear_t* ll, int valor)
 {
     int i;
 
-    for (i = ll->tamanho; i > 0 && ll->elementos[i - 1]; i--)
+    for (i = ll->tamanho; i > 0 && ll->elementos[i - 1] > valor; i--)
     {
         ll->elementos[i] = ll->elementos[i - 1];
     }
@@ -66,7 +66,7 @@ void inserir_na_lista(lista_linear_t* ll, int valor)
 
 int busca_binaria(lista_linear_t* ll, int valor)
 {
-    int inicio = 0, fim = ll->tamanho;
+    int inicio = 0, fim = ll->tamanho - 1;
 
     while (inicio <= fim)
     {
