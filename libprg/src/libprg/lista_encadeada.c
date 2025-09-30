@@ -1,22 +1,43 @@
-// #include <iso646.h>
-//
-// #include "libprg/libprg.h"
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <stdbool.h>
-//
-// no_t *criar_lista_encadeada(int valor) {
-//     no_t *no = malloc(sizeof(no_t));
-//     no->valor = valor;
-//     no->proximo = NULL;
-//
-//     return no;
-// }
-//
-// no_t *adicionar_na_lista_encadeada(no_t **inicio, int valor) {
-//     no_t *novo_no = criar_lista_encadeada(valor);
-//     novo_no->proximo = &inicio;
-//     inicio = novo_no;
-//
-//     return inicio;
-// }
+#include <iso646.h>
+
+#include "libprg/libprg.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct no {
+    int valor;
+    struct no *proximo;
+}no_t;
+
+no_t *criar_lista_encadeada(int valor) {
+    no_t *no = malloc(sizeof(no_t));
+    no->valor = valor;
+    no->proximo = NULL; // o último nó da lista sempre apontará para NULL
+
+    return no;
+}
+
+void adicionar_na_lista_encadeada(no_t **inicio, int valor) {
+    no_t *novo_no = criar_lista_encadeada(valor); // cria a lista encadeada (nó)
+    novo_no->proximo = *inicio; // o novo nó passa a apontar para o elemento que já existia
+    *inicio = novo_no; // e o início passa a apontar para o novo nó
+}
+
+no_t* buscar_na_lista_encadeada(no_t **inicio, int valor) {
+    no_t *atual = *inicio;
+
+    while (atual) { // enquanto o valor do atual for diferente de nulo - mesmo que while(atual!=NULL)
+        if (atual->valor == valor) { // se o valor do atual for igual ao valor
+            return atual; // retorna o endereço onde o valor está armazenado
+        }
+        atual = atual->proximo; // caso não entre no if, passa para o próximo elemento da lista
+    }
+    return NULL; // retorna que não encontrou o valor em nenhum endereço
+}
+
+void remover_da_lista_encadeada(no_t **inicio, int valor) {
+    no_t *no_para_remover = buscar_na_lista_encadeada(*inicio, valor);
+
+
+}
