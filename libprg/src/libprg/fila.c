@@ -76,6 +76,14 @@ bool fila_vazia(fila_t *f) {
     return f->tamanho == 0;
 }
 
+void listar_fila(fila_t *f)
+{
+    for (int i = 0; i < f->fim; i++)
+    {
+        printf("\t%d", f->elementos[i]);
+    }
+}
+
 void destruir_fila(fila_t *f){
     free(f->elementos);
     free(f);

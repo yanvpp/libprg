@@ -26,6 +26,7 @@ int fim_fila(fila_t* f);
 int tamanho_fila(fila_t* f);
 bool fila_cheia(fila_t* f);
 bool fila_vazia(fila_t* f);
+void listar_fila(fila_t *f);
 void destruir_fila(fila_t* f);
 
 //|-- LISTA LINEAR --|
