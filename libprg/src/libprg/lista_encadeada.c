@@ -70,7 +70,7 @@ void remover_da_lista_encadeada(no_t **inicio, int valor) {
             if (anterior) { // se tiver anterior
                 anterior->proximo = atual->proximo; // o próximo do anterior será o próximo do atual
             } else { // se não tiver anterior
-                *inicio = atual->proximo;
+                *inicio = atual->proximo; //o iníncio passa a ser o próximo do atual
             }
             free(atual); // libera o local da memória do elemento removido ~~ remove o elemento
             break; // se achou, quebra o while

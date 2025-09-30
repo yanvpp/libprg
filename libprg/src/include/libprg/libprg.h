@@ -4,12 +4,7 @@
 
 //|-- PILHA --|
 
-typedef struct pilha
-{
-    int *elementos;
-    int topo;
-    int capacidade;
-} pilha_t;
+typedef struct pilha pilha_t;
 
 pilha_t *criar_pilha(int capacidade);
 int empilhar_pilha(pilha_t *p, int valor);
@@ -21,13 +16,7 @@ void destruir_pilha(pilha_t *p);
 
 //|-- FILA --|
 
-typedef struct fila {
-    int* elementos;
-    int capacidade;
-    int tamanho;
-    int inicio;
-    int fim;
-}fila_t;
+typedef struct fila fila_t;
 
 fila_t* criar_fila(int capacidade);
 void enfileirar(fila_t* fila, int valor);
@@ -41,12 +30,7 @@ void destruir_fila(fila_t *f);
 
 //|-- LISTA LINEAR --|
 
-typedef struct lista_linear {
-    int *elementos;
-    int tamanho;
-    int capacidade;
-    bool ordenada;
-}lista_linear_t;
+typedef struct lista_linear lista_linear_t;
 
 lista_linear_t *criar_lista_linear(int capacidade, bool ordenada);
 bool lista_cheia(lista_linear_t *ll);

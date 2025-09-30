@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct pilha
+{
+    int *elementos;
+    int topo;
+    int capacidade;
+} pilha_t;
+
 pilha_t *criar_pilha(int capacidade) {
     pilha_t *p = malloc(sizeof(pilha_t));
 
