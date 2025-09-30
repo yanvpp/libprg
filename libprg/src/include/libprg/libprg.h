@@ -58,15 +58,12 @@ void destruir_lista(lista_linear_t *ll);
 
 // |-- LISTA ENCADEADA --|
 
-typedef struct no {
-    int valor;
-    int head;
-    struct no *proximo;
-}no_t;
+typedef struct no no_t;
 
 no_t *criar_lista_encadeada(int valor);
-no_t *adicionar_na_lista_encadeada(no_t **inicio, int valor);
-// remover
+void adicionar_na_lista_encadeada(no_t **inicio, int valor);
+no_t* buscar_na_lista_encadeada(no_t **inicio, int valor);
+void remover_da_lista_encadeada(no_t **inicio, int valor);
 void destruir_lista_encadeada(no_t *no);
 
 #endif //LABORATORIO_LIBPRG_H
