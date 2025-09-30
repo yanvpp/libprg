@@ -1,6 +1,7 @@
 #include "libprg/libprg.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 typedef struct lista_linear {
     int *elementos;
@@ -142,6 +143,14 @@ int busca_binaria(lista_linear_t* ll, int valor)
     int tamanho_lista_linear(lista_linear_t *ll)
     {
        return ll->tamanho;
+    }
+
+    void listar_lista_linear(lista_linear_t *ll)
+    {
+        for (int i = 0; i < ll->tamanho; i++)
+        {
+            printf("\t%d", ll->elementos[i]);
+        }
     }
 
     void destruir_lista(lista_linear_t* ll)
