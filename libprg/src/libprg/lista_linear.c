@@ -139,6 +139,11 @@ int busca_binaria(lista_linear_t* ll, int valor)
         ll->tamanho--;
     }
 
+    int tamanho_lista_linear(lista_linear_t *ll)
+    {
+       return ll->tamanho;
+    }
+
     void destruir_lista(lista_linear_t* ll)
     {
         free(ll->elementos);
