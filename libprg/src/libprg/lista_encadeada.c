@@ -35,7 +35,15 @@ void adicionar_na_lista_encadeada(no_t **inicio, int valor) {
 void adicionar_na_lista_encadeada_circular(no_t **inicio, int valor) {
     no_t *novo_no = criar_lista_encadeada_circular(valor); // cria a lista encadeada circular (nó)
     novo_no->proximo = *inicio; // o novo nó passa a apontar para o elemento que já existia
-    *inicio = novo_no; // e o início passa a apontar para o novo nó
+
+    no_t *ultimo = *inicio;
+
+    while (ultimo->proximo != *inicio){ // enquanto o próximo do último for diferente do & do primeiro
+        ultimo = ultimo->proximo; // passa para o próximo
+    }
+
+    ultimo->proximo = novo_no; // o último passa a apontar para o elemento recém adcionado
+    *inicio = novo_no; // e o início passa a ser o nó recém adicionado
 }
 
 no_t *buscar_na_lista_encadeada(no_t **inicio, int valor) {
