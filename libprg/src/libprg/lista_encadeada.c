@@ -64,7 +64,7 @@ void remover_da_lista_encadeada(no_t **inicio, int valor) {
     no_t *atual = *inicio;
     no_t *anterior = NULL;
 
-    while (atual) { // enquanto tiver um atual
+    while (atual) { // enquanto o atual for diferente de NULL
         if (atual->valor == valor) {
             // se o valor do atual for igual ao valor solicitado
             if (anterior) { // se tiver anterior
@@ -77,5 +77,27 @@ void remover_da_lista_encadeada(no_t **inicio, int valor) {
         }
         anterior = atual;
         atual = atual->proximo;
+    }
+}
+
+void destruir_lista_encadeada(no_t **inicio) {
+    // no_t *atual = *inicio;
+    // no_t *proximo = atual->proximo;
+    //
+    // while (proximo) { // enquanto o atual for diferente de nulo
+    //     free(atual); // limpa o local onde o atual está apontando, não a variável "atual"
+    //     atual = proximo; // o atual passa a ser o próximo
+    //     proximo = atual->proximo; // o proximo passa a ser o próximo do atual
+    // }
+    // free (atual); // limpa o valor antes do NULL
+
+    // da maneira que fiz em cima funciona também, mas abaixo está uma forma com menos linhas, mais eficiente
+
+    no_t *atual = *inicio;
+
+    while (atual) {
+        no_t *proximo = atual->proximo;
+        free(atual);
+        atual = proximo;
     }
 }
