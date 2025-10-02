@@ -55,5 +55,6 @@ void remover_da_lista_encadeada(no_t** inicio, int valor);
 void destruir_lista_encadeada(no_t** inicio);
 no_t* criar_lista_encadeada_circular(int valor);
 void adicionar_na_lista_encadeada_circular(no_t** inicio, int valor);
+void destuir_lista_encadeada_circular(no_t **inicio);
 
 #endif //LABORATORIO_LIBPRG_H

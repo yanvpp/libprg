@@ -101,3 +101,14 @@ void destruir_lista_encadeada(no_t **inicio) {
         atual = proximo;
     }
 }
+
+void destuir_lista_encadeada_circular(no_t **inicio) {
+    no_t *atual = *inicio;
+
+    while (atual) {
+        no_t *proximo = atual->proximo;
+        free(atual);
+        if (proximo == *inicio) break; // se o próximo for o início, interrompe e encerra o código
+        atual = proximo;
+    }
+}
