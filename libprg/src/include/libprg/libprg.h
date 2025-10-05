@@ -56,6 +56,7 @@ no_t* criar_lista_encadeada(int valor);
 void adicionar_na_lista_encadeada(no_t** inicio, int valor);
 no_t* inicio_lista_encadeada(no_t** inicio);
 no_t* buscar_na_lista_encadeada(no_t** inicio, int valor);
+void listar_lista_encadeada(no_t **inicio);
 void remover_da_lista_encadeada(no_t** inicio, int valor);
 void destruir_lista_encadeada(no_t** inicio);
 no_t* criar_lista_encadeada_circular(int valor);
