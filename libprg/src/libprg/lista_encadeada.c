@@ -28,11 +28,11 @@ no_t *criar_lista_encadeada_circular(int valor) {
 
 no_t *inicio_lista_encadeada(no_t **inicio)
 {
-    if (inicio)
+    if (inicio) // se o início for diferente de NULL -- Se a lista não for vazia
     {
-        return *inicio;
+        return *inicio; // retorna o valor armazenado aonde o início está apontando
     }
-    return NULL;
+    return NULL; // caso a lista esteja vazia, retorna NULL
 }
 
 
