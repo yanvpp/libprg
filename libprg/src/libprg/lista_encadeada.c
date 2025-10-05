@@ -26,6 +26,16 @@ no_t *criar_lista_encadeada_circular(int valor) {
     return no;
 }
 
+no_t *inicio_lista_encadeada(no_t **inicio)
+{
+    if (inicio)
+    {
+        return *inicio;
+    }
+    return NULL;
+}
+
+
 void adicionar_na_lista_encadeada(no_t **inicio, int valor) {
     no_t *novo_no = criar_lista_encadeada(valor); // cria a lista encadeada (nó)
     novo_no->proximo = *inicio; // o novo nó passa a apontar para o elemento que já existia
