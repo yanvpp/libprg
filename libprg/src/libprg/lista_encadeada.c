@@ -2,11 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct no {
-    int valor;
-    struct no *proximo;
-} no_t;
-
 no_t *criar_lista_encadeada(int valor) {
     no_t *no = malloc(sizeof(no_t));
     no->valor = valor;
