@@ -46,7 +46,11 @@ void destruir_lista(lista_linear_t* ll);
 
 // |-- LISTA ENCADEADA --|
 
-typedef struct no no_t;
+typedef struct no
+{
+    int valor;
+    struct no *proximo;
+} no_t;
 
 no_t* criar_lista_encadeada(int valor);
 void adicionar_na_lista_encadeada(no_t** inicio, int valor);
