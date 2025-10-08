@@ -3,9 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct fila
+typedef struct fila // define a estrutura fila
 {
-    // define a estrutura fila
     int* elementos; // elementos da fila
     int capacidade; // capacidada da fila
     int tamanho; // tamanho da fila
