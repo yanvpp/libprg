@@ -4,20 +4,20 @@
 
 no_t* criar_lista_encadeada(int valor)
 {
-    no_t* no = malloc(sizeof(no_t));
-    no->valor = valor;
+    no_t* no = malloc(sizeof(no_t)); // cria um nó
+    no->valor = valor; // o valor do nó passa a ser o valor que a função recebeu
     no->proximo = NULL; // o último nó da lista sempre apontará para NULL
 
-    return no;
+    return no; // retorna o nó criado
 }
 
 no_t* criar_lista_encadeada_circular(int valor)
 {
-    no_t* no = malloc(sizeof(no_t));
-    no->valor = valor;
+    no_t* no = malloc(sizeof(no_t)); // aloca memória para criar o nó
+    no->valor = valor; // o valor do nó passa a ser o valor que a função recebeu
     no->proximo = no; // o último nó da lista sempre apontará para o primeiro elemento
 
-    return no;
+    return no; // retorna o nó criado
 }
 
 no_t* inicio_lista_encadeada(no_t** inicio)
@@ -42,9 +42,9 @@ void adicionar_na_lista_encadeada_circular(no_t** inicio, int valor)
     no_t* novo_no = criar_lista_encadeada_circular(valor); // cria a lista encadeada circular (nó)
     novo_no->proximo = *inicio; // o novo nó passa a apontar para o elemento que já existia
 
-    no_t* ultimo = *inicio;
+    no_t* ultimo = *inicio; // o início passa a ser o último
 
-    while (ultimo->proximo != *inicio)
+    while (ultimo->proximo != *inicio) // enquanto o endereço do próximo do último for diferente do endereço do inicial
     {
         // enquanto o próximo do último for diferente do & do primeiro
         ultimo = ultimo->proximo; // passa para o próximo
@@ -56,14 +56,12 @@ void adicionar_na_lista_encadeada_circular(no_t** inicio, int valor)
 
 no_t* buscar_na_lista_encadeada(no_t** inicio, int valor)
 {
-    no_t* atual = *inicio;
+    no_t* atual = *inicio; // o atual passa a ser o inicio
 
-    while (atual)
+    while (atual) // enquanto o valor do atual for diferente de nulo - mesmo que while(atual!=NULL)
     {
-        // enquanto o valor do atual for diferente de nulo - mesmo que while(atual!=NULL)
-        if (atual->valor == valor)
+        if (atual->valor == valor) // se o valor do atual for igual ao valor
         {
-            // se o valor do atual for igual ao valor
             return atual; // retorna o endereço onde o valor está armazenado
         }
         atual = atual->proximo; // caso não entre no if, passa para o próximo elemento da lista
@@ -85,30 +83,26 @@ void listar_lista_encadeada(no_t** inicio)
 
 void remover_da_lista_encadeada(no_t** inicio, int valor)
 {
-    no_t* atual = *inicio;
-    no_t* anterior = NULL;
+    no_t* atual = *inicio; // o atual passa a ser o inicio
+    no_t* anterior = NULL; // o anterior passa a ser o NULL
 
-    while (atual)
+    while (atual) // enquanto o atual for diferente de NULL
     {
-        // enquanto o atual for diferente de NULL
-        if (atual->valor == valor)
+        if (atual->valor == valor) // se o valor do atual for igual ao valor solicitado
         {
-            // se o valor do atual for igual ao valor solicitado
-            if (anterior)
+            if (anterior) // se tiver anterior
             {
-                // se tiver anterior
                 anterior->proximo = atual->proximo; // o próximo do anterior será o próximo do atual
             }
-            else
+            else // se não tiver anterior
             {
-                // se não tiver anterior
                 *inicio = atual->proximo; //o iníncio passa a ser o próximo do atual
             }
             free(atual); // libera o local da memória do elemento removido ~~ remove o elemento
             break; // se achou, quebra o while
         }
-        anterior = atual;
-        atual = atual->proximo;
+        anterior = atual; // o anterior passa a ser o atual
+        atual = atual->proximo; // o atual passa a ser o próximo do anterior (o próximo elemento)
     }
 }
 
@@ -126,25 +120,25 @@ void destruir_lista_encadeada(no_t** inicio)
 
     // da maneira que fiz em cima funciona também, mas abaixo está uma forma com menos linhas, mais eficiente
 
-    no_t* atual = *inicio;
+    no_t* atual = *inicio; // o atual passa a ser o início
 
-    while (atual)
+    while (atual) // enquanto o atual for diferente de NULL ~~ enquanto tiver elementos
     {
-        no_t* proximo = atual->proximo;
-        free(atual);
-        atual = proximo;
+        no_t* proximo = atual->proximo; // o próximo passa a ser o próximo do atual
+        free(atual); // limpa o local onde o atual está apontando, não a variável "atual"
+        atual = proximo; // o atual passa a ser o próximo
     }
 }
 
 void destuir_lista_encadeada_circular(no_t** inicio)
 {
-    no_t* atual = *inicio;
+    no_t* atual = *inicio; // o atual passa a ser o início
 
-    while (atual)
+    while (atual) // enquanto tiver elementos
     {
-        no_t* proximo = atual->proximo;
-        free(atual);
+        no_t* proximo = atual->proximo; // o próximo passa a ser o próximo do atual
+        free(atual); // limpa o local onde o atual está apontando, não a variável "atual"
         if (proximo == *inicio) break; // se o próximo for o início, interrompe e encerra o código
-        atual = proximo;
+        atual = proximo; // o atual passa a ser o próximo
     }
 }
