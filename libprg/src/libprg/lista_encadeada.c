@@ -134,7 +134,7 @@ void destuir_lista_encadeada_circular(no_t** inicio)
 {
     no_t* atual = *inicio; // o atual passa a ser o início
 
-    while (atual) // enquanto tiver elementos
+    while (atual) // enquanto o atual for diferente de NULL ~~ enquanto tiver elementos
     {
         no_t* proximo = atual->proximo; // o próximo passa a ser o próximo do atual
         free(atual); // limpa o local onde o atual está apontando, não a variável "atual"
