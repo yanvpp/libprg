@@ -44,6 +44,13 @@ void adicionar_na_lista_encadeada_circular(no_t** inicio, int valor)
 
     no_t* ultimo = *inicio; // o início passa a ser o último
 
+    if (*inicio == NULL) // se a lista estiver vazia
+    {
+        *inicio = novo_no; // o ínicio é igual ao novo nó criado
+        novo_no->proximo = novo_no; // o primeiro nó aponta para si mesmo
+        return;
+    }
+
     while (ultimo->proximo != *inicio) // enquanto o endereço do próximo do último for diferente do endereço do inicial
     {
         // enquanto o próximo do último for diferente do & do primeiro
@@ -132,6 +139,11 @@ void destruir_lista_encadeada(no_t** inicio)
 
 void destuir_lista_encadeada_circular(no_t** inicio)
 {
+    if (*inicio == NULL) // se a lista já estiver vazia
+    {
+        return; // apenas retorna
+    }
+
     no_t* atual = *inicio; // o atual passa a ser o início
 
     while (atual) // enquanto o atual for diferente de NULL ~~ enquanto tiver elementos
