@@ -23,5 +23,42 @@ void adicionar_na_lista_encadeada_dupla(no_duplo_t **inicio, int valor) {
     *inicio = novo_no_duplo; // e o início passa a ser o novo nó
 }
 
+no_duplo_t* buscar_na_lista_encadeada_dupla(no_t** inicio, int valor)
+{
+    no_duplo_t* atual = *inicio; // o atual passa a ser o inicio
 
+    while (atual) // enquanto o valor do atual for diferente de nulo - mesmo que while(atual!=NULL)
+    {
+        if (atual->valor == valor) // se o valor do atual for igual ao valor
+        {
+            return atual; // retorna o endereço onde o valor está armazenado
+        }
+        atual = atual->proximo; // caso não entre no if, passa para o próximo elemento da lista
+    }
+    return NULL; // retorna que não encontrou o valor em nenhum endereço
+}
+
+void remover_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor)
+{
+    no_duplo_t* atual = *inicio; // o atual passa a ser o inicio
+
+    while (atual) // enquanto o atual for diferente de NULL
+    {
+        if (atual->valor == valor) // se o valor do atual for igual ao valor solicitado
+        {
+            if ((atual->anterior)) // se tiver anterior
+            {
+                atual->proximo->anterior = atual->proximo; // o anterior do próximo do atual irá apontar para o próximo do atual
+                atual->anterior->proximo = atual->anterior; // o próximo do anterior do atual irá apontar para o anterior do atual
+            }
+            else // se não tiver anterior
+            {
+                *inicio = atual->proximo; //o início passa a ser o próximo do atual
+                (*inicio)->anterior = NULL; // o anterior do ínicio será o nulo
+            }
+            free(atual); // libera o local da memória do elemento removido ~~ remove o elemento
+            break; // se achou, quebra o while
+        }
+    }
+}
 

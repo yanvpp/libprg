@@ -73,5 +73,7 @@ typedef struct no_duplo {
 
 no_duplo_t* criar_lista_encadeada_dupla(int valor);
 void adicionar_na_lista_encadeada_dupla(no_duplo_t **inicio, int valor);
+no_duplo_t* buscar_na_lista_encadeada_dupla(no_t** inicio, int valor);
+void remover_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor);
 
 #endif //LABORATORIO_LIBPRG_H
