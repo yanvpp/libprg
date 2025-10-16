@@ -59,6 +59,7 @@ void remover_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor)
             free(atual); // libera o local da memória do elemento removido ~~ remove o elemento
             break; // se achou, quebra o while
         }
+        atual = atual->proximo; // o atual passa a ser o próximo do anterior (o próximo elemento)
     }
 }
 
