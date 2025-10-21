@@ -13,6 +13,7 @@ int topo_pilha(pilha_t* p);
 int* listar_pilha(pilha_t* p);
 int tamanho_pilha(pilha_t* p);
 void destruir_pilha(pilha_t* p);
+void empilhar_na_posicao(pilha_t *p, int valor, int posicao);
 
 //|-- FILA --|
 
@@ -43,14 +44,12 @@ int tamanho_lista_linear(lista_linear_t* ll);
 void listar_lista_linear(lista_linear_t *ll);
 int inicio_lista_linear(lista_linear_t *ll);
 void destruir_lista(lista_linear_t* ll);
+int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao);
+void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao);
 
 // |-- LISTA ENCADEADA --|
 
-typedef struct no
-{
-    int valor;
-    struct no *proximo;
-} no_t;
+typedef struct no no_t;
 
 no_t* criar_lista_encadeada(int valor);
 void adicionar_na_lista_encadeada(no_t** inicio, int valor);
@@ -65,11 +64,7 @@ void destuir_lista_encadeada_circular(no_t **inicio);
 
 // |-- LISTA ENCADEADA DUPLA --|
 
-typedef struct no_duplo {
-    int valor;
-    struct no_duplo *anterior;
-    struct no_duplo *proximo;
-}no_duplo_t;
+typedef struct no_duplo no_duplo_t;
 
 no_duplo_t* criar_lista_encadeada_dupla(int valor);
 void adicionar_na_lista_encadeada_dupla(no_duplo_t **inicio, int valor);

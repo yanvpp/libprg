@@ -17,7 +17,7 @@ lista_linear_t* criar_lista_linear(int capacidade, bool ordenada)
 
     ll->elementos = malloc(capacidade * sizeof(int)); // aloca memória para os elementos da lista linear
     ll->tamanho = 0; // inicia o tamanho da lista linear como zero, pois está vazia
-    ll->capacidade = capacidade; // a capacidade da lista é igual a recebida pela função
+    ll->capacidade = capacidade; // a capacidade da lista é igual à recebida pela função
     ll->ordenada = ordenada; // define se a lista é ou não ordenada
 
     return ll; // retorna a lista
@@ -54,16 +54,19 @@ void inserir_na_lista_ordenada(lista_linear_t* ll, int valor)
 
 void inserir_na_lista(lista_linear_t* ll, int valor)
 {
-    if (!lista_cheia(ll)) // se a lista não estiver cheia
+    if (lista_cheia(ll)) // se a lista estiver cheia
     {
-        if (ll->ordenada) // e se a lista for ordenada
-        {
-            inserir_na_lista_ordenada(ll, valor); // chama a função que insere na ordenada
-        }
-        else
-        {
-            inserir_na_lista_nao_ordenada(ll, valor); // caso contrário, chama a função que insere na não ordenada
-        }
+        realloc(ll->elementos, sizeof(int) * ll->capacidade * 2); // dobra o tamanho da lista
+        ll->capacidade *= 2; // dobra a capacidade da lista
+    }
+
+    if (ll->ordenada) // e se a lista for ordenada
+    {
+        inserir_na_lista_ordenada(ll, valor); // chama a função que insere na ordenada
+    }
+    else
+    {
+        inserir_na_lista_nao_ordenada(ll, valor); // caso contrário, chama a função que insere na não ordenada}
     }
 }
 
@@ -169,3 +172,23 @@ void destruir_lista(lista_linear_t* ll)
     free(ll->elementos); // libera a memória alocada pelos elementos da lista
     free(ll); // libera a memória alocada pela lista
 }
+
+int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao)
+{
+    return ll->elementos[posicao];
+}
+
+void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao)
+{
+    if (posicao > ll->tamanho) posicao = ll->tamanho; // se a posição for maior que o tamanho, insere no final
+    if (posicao < 0) posicao = 0; // se a posição for menor que zero, insere na posição 0
+
+    if (!ll->ordenada)
+    {
+        inserir_na_lista_nao_ordenada(ll, ll->elementos[valor]); // coloca o valor que está na posição no fim da fila
+        ll->elementos[posicao] = valor; // insere o valor desejado na posição desejada
+    }
+
+    inserir_na_lista_ordenada(ll, valor);
+}
+

@@ -5,9 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct no_duplo {
+    int valor;
+    struct no_duplo *anterior;
+    struct no_duplo *proximo;
+}no_duplo_t;
+
 no_duplo_t *criar_lista_encadeada_dupla(int valor)
 {
-    no_duplo_t* no_duplo = malloc(sizeof(no_t)); // cria um nó
+    no_duplo_t* no_duplo = malloc(sizeof(no_duplo_t)); // cria um nó
     no_duplo->valor = valor; // o valor do nó passa a ser o valor que a função recebeu
     no_duplo->proximo = NULL; // o último nó da lista sempre apontará para NULL ->
     no_duplo->anterior = NULL; // o primeiro nó aponta para o início <-
@@ -16,7 +22,7 @@ no_duplo_t *criar_lista_encadeada_dupla(int valor)
 }
 
 void adicionar_na_lista_encadeada_dupla(no_duplo_t **inicio, int valor) {
-    no_duplo_t* novo_no_duplo = criar_lista_encadeada(valor); // cria a lista encadeada (nó)
+    no_duplo_t* novo_no_duplo = criar_lista_encadeada_dupla(valor); // cria a lista encadeada (nó)
     novo_no_duplo->proximo = *inicio; // o novo nó passa a apontar para o elemento que já existia
     (*inicio)->anterior = novo_no_duplo; // o anterior do início passa a ser o novo nó
     novo_no_duplo->anterior = NULL; // o nó criado tem como seu anterior o NULL

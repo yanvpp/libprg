@@ -75,3 +75,8 @@ void destruir_pilha(pilha_t* p)
     free(p->elementos); // libera a memória alocada pelos elementos da pilha
     free(p); // libera a memória alocada para a pilha
 }
+
+void empilhar_na_posicao(pilha_t *p, int valor, int posicao)
+{
+
+}
