@@ -166,13 +166,6 @@ int inicio_lista_linear(lista_linear_t* ll)
     return ll->elementos[0]; // retorna o elemento que está no início da lista
 }
 
-
-void destruir_lista(lista_linear_t* ll)
-{
-    free(ll->elementos); // libera a memória alocada pelos elementos da lista
-    free(ll); // libera a memória alocada pela lista
-}
-
 int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao)
 {
     return ll->elementos[posicao];
@@ -203,3 +196,8 @@ void remover_na_posicao_da_lista(lista_linear_t* ll, int posicao)
     remover_da_lista(ll, ll->elementos[indice]); // chama a função remover da lista, enviando a lista e o valor que está na posição
 }
 
+void destruir_lista(lista_linear_t* ll)
+{
+    free(ll->elementos); // libera a memória alocada pelos elementos da lista
+    free(ll); // libera a memória alocada pela lista
+}
