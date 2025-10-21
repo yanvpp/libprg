@@ -178,17 +178,28 @@ int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao)
     return ll->elementos[posicao];
 }
 
+int limitar_posicao_na_lista(lista_linear_t *ll, int posicao) {
+    if (posicao > ll->tamanho) return ll->tamanho; // se a posição for maior que o tamanho, insere no final
+    if (posicao < 0) return 0; // se a posição for menor que zero, insere na posição 0
+}
+
 void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao)
 {
-    if (posicao > ll->tamanho) posicao = ll->tamanho; // se a posição for maior que o tamanho, insere no final
-    if (posicao < 0) posicao = 0; // se a posição for menor que zero, insere na posição 0
+    int indice = limitar_posicao_na_lista(ll, posicao);
 
-    if (!ll->ordenada)
+    if (!ll->ordenada) // se não for ordenada
     {
         inserir_na_lista_nao_ordenada(ll, ll->elementos[valor]); // coloca o valor que está na posição no fim da fila
-        ll->elementos[posicao] = valor; // insere o valor desejado na posição desejada
+        ll->elementos[indice] = valor; // insere o valor desejado na posição desejada
     }
 
-    inserir_na_lista_ordenada(ll, valor);
+    inserir_na_lista_ordenada(ll, valor); // se for ordenada, insere na lista ordenada
+}
+
+void remover_na_posicao_da_lista(lista_linear_t* ll, int posicao)
+{
+    int indice = limitar_posicao_na_lista(ll, posicao);
+
+    remover_da_lista(ll, ll->elementos[indice]); // chama a função remover da lista, enviando a lista e o valor que está na posição
 }
 

@@ -46,6 +46,7 @@ int inicio_lista_linear(lista_linear_t *ll);
 void destruir_lista(lista_linear_t* ll);
 int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao);
 void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao);
+void remover_na_posicao_da_lista(lista_linear_t* ll, int posicao);
 
 // |-- LISTA ENCADEADA --|
 
@@ -61,6 +62,7 @@ void destruir_lista_encadeada(no_t** inicio);
 no_t* criar_lista_encadeada_circular(int valor);
 void adicionar_na_lista_encadeada_circular(no_t** inicio, int valor);
 void destuir_lista_encadeada_circular(no_t **inicio);
+
 
 // |-- LISTA ENCADEADA DUPLA --|
 
