@@ -179,7 +179,7 @@ int limitar_posicao_na_lista(lista_linear_t *ll, int posicao)
 
 void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao)
 {
-    int indice = limitar_posicao_na_lista(ll, posicao);
+    int indice = limitar_posicao_na_lista(ll, posicao); // local para adicionar
 
     if (!ll->ordenada) // se não for ordenada
     {

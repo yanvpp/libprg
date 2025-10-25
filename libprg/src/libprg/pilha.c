@@ -105,7 +105,7 @@ int buscar_na_posicao_da_pilha(pilha_t* p, int posicao)
         empilhar_pilha(pilha_auxiliar, valor_auxiliar); // empilha na pilha auxiliar
     }
 
-    int valor_na_posicao = topo_pilha(p); // retorna o elemento da posição desejada
+    int valor_na_posicao = topo_pilha(p); // salva o elemento da posição desejada
 
     while (pilha_auxiliar->topo >= 0) // enquanto o topo da pilha auxiliar for maior ou igual a zero
     {
@@ -113,14 +113,14 @@ int buscar_na_posicao_da_pilha(pilha_t* p, int posicao)
         empilhar_pilha(p, valor_auxiliar); // reempilha na pilha original
     }
 
-    destruir_pilha(pilha_auxiliar); // destói a pilha auxiliar para liberar memória
+    destruir_pilha(pilha_auxiliar); // destrói a pilha auxiliar para liberar memória
 
     return valor_na_posicao;
 }
 
 int limitar_posicao_da_pilha(pilha_t* p, int posicao)
 {
-    if (posicao > p->topo) return p->topo; // se a posição for maior que o topo, empilha no topo
+    if (posicao > p->topo) return p->topo; // se a posição for maior que o topo, empilha no próximo do topo
     if (posicao < 0) return 0; // se a posição for menor que zero, empilha no início
 }
 
@@ -149,7 +149,7 @@ void empilhar_na_posicao(pilha_t* p, int valor, int posicao)
 
 void desempilhar_na_posicao(pilha_t* p, int posicao)
 {
-    if (pilha_vazia(p)) return;
+    if (pilha_vazia(p)) return; // se a pilha estiver vazia, não faz nada
 
     int indice = limitar_posicao_da_pilha(p, posicao); // índice do elemento a ser removido
     pilha_t* pilha_auxiliar = criar_pilha(p->capacidade); // cria uma pilha auxiliar
