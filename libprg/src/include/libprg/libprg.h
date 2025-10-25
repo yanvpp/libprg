@@ -14,6 +14,11 @@ int* listar_pilha(pilha_t* p);
 int tamanho_pilha(pilha_t* p);
 void destruir_pilha(pilha_t* p);
 void empilhar_na_posicao(pilha_t *p, int valor, int posicao);
+int limitar_posicao_da_pilha(pilha_t* p, int posicao);
+bool pilha_cheia(pilha_t *p);
+bool pilha_vazia(pilha_t* p);
+int buscar_na_posicao_da_pilha(pilha_t* p, int posicao);
+void desempilhar_na_posicao(pilha_t* p, int posicao);
 
 //|-- FILA --|
 
