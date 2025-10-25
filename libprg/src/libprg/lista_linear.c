@@ -171,7 +171,8 @@ int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao)
     return ll->elementos[posicao];
 }
 
-int limitar_posicao_na_lista(lista_linear_t *ll, int posicao) {
+int limitar_posicao_na_lista(lista_linear_t *ll, int posicao)
+{
     if (posicao > ll->tamanho) return ll->tamanho; // se a posição for maior que o tamanho, insere no final
     if (posicao < 0) return 0; // se a posição for menor que zero, insere na posição 0
 }
