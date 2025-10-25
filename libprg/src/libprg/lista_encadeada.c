@@ -143,7 +143,7 @@ void destruir_lista_encadeada(no_t** inicio)
     }
 }
 
-void destuir_lista_encadeada_circular(no_t** inicio)
+void destruir_lista_encadeada_circular(no_t** inicio)
 {
     if (*inicio == NULL) // se a lista já estiver vazia
     {
