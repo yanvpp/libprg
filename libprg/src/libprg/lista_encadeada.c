@@ -312,3 +312,30 @@ void adicionar_na_posicao_da_lista_encadeada_circular(no_t** inicio, int valor, 
     novo_no->proximo = atual->proximo; // o próximo do nó criado será o próximo do atual
     atual->proximo = novo_no; // o próximo do atual será o nó criado
 }
+
+no_t* buscar_na_posicao_da_lista_encadeada_circular(no_t** inicio, int posicao)
+{
+    if (*inicio == NULL) return NULL; // se a lista estiver vazia, retorna nulo
+    if (posicao < 0) return NULL; // se a posição for menor que 0, retorna nulo
+    if (posicao == 0) return *inicio; // se a posição for igual a zero, retorna o elemento do início
+    if (tamanho_da_lista_encadeada_circular(*inicio) < posicao) return NULL; // se a posição desejada for maior que o tamanho da lista, retorna nulo
+
+    no_t* atual = *inicio; // cria um nó auxiliar para percorrer
+
+    for (int i = 0; i < posicao; i++) // enquanto o índice atual for diferente do índice desejado
+    {
+        atual = atual->proximo; // passa para o próximo
+    }
+
+    return atual; // retorna o valor encontrado na posição
+}
+
+void remover_da_posicao_da_lista_encadeada_circular(no_t** inicio, int posicao)
+{
+    if (*inicio == NULL) return; // se a lista estiver vazia, não faz nada
+
+    if (posicao == 0) // se a posição for zero
+    {
+
+    }
+}
