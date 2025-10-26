@@ -73,6 +73,8 @@ int limitar_na_lista_encadeada(no_t** inicio, int posicao);
 bool lista_encadeada_vazia(no_t** inicio);
 no_t* buscar_na_posicao_da_lista_encadeada(no_t** inicio, int posicao);
 void remover_da_posicao_da_lista_encadeada(no_t** inicio, int posicao);
+int tamanho_da_lista_encadeada_circular(no_t* inicio);
+void adicionar_na_posicao_da_lista_encadeada_circular(no_t** inicio, int valor, int posicao);
 
 // |-- LISTA ENCADEADA DUPLA --|
 

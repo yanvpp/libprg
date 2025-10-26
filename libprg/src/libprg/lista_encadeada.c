@@ -265,3 +265,44 @@ void remover_da_posicao_da_lista_encadeada(no_t** inicio, int posicao)
 
     free(no_para_remover); // libera a memória do nó auxiliar
 }
+
+int tamanho_da_lista_encadeada_circular(no_t* inicio)
+{
+    if (inicio == NULL) return 0; // se a lista estiver vazia, retorna o tamanho como 0
+
+    int quantidade_de_elementos = 0; // contador
+    no_t* atual = inicio; // nó auxiliar para percorrer
+
+    for (int i = 0; atual->proximo != inicio; i++) // enquanto o próximo do atual for diferente do início
+    {
+        atual = atual->proximo; // passa para o próximo
+        quantidade_de_elementos++; // aumenta a quantidade de elementos
+    }
+
+    return quantidade_de_elementos + 1; // retorna a quantidade de elementos + 1, pois o último não é contado no laço for
+}
+
+void adicionar_na_posicao_da_lista_encadeada_circular(no_t** inicio, int valor, int posicao)
+{
+    if (*inicio == NULL) // se a lista estiver vazia
+    {
+        adicionar_na_lista_encadeada_circular(inicio, valor); // insere na primeira posição
+        return; // retorna
+    }
+
+    int tamanho_da_lista = tamanho_da_lista_encadeada_circular(*inicio); // tamanho da lista encadeada circular
+    int indice = posicao; // variável auxiliar
+    if (indice < 0) indice = 0; // se a posição for menor que zero, o índice se torna 0
+    if (indice > tamanho_da_lista) indice = tamanho_da_lista; // se a posição for maior que o tamanho da lista, o índice se torna o último elemento dela
+
+    no_t* atual = *inicio; // nó auxiliar
+    no_t* novo_no = criar_lista_encadeada_circular(valor);
+
+    for (int i = 0; i < indice - 1; i++) // enquanto não encontrar o anterior da posição alvo
+    {
+        atual = atual->proximo; // passa para o próximo
+    }
+
+    novo_no->proximo = atual->proximo; // o próximo do nó criado será o próximo do atual
+    atual->proximo = novo_no; // o próximo do atual será o nó criado
+}
