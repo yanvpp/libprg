@@ -85,7 +85,9 @@ no_duplo_t* criar_lista_encadeada_dupla(int valor);
 void adicionar_na_lista_encadeada_dupla(no_duplo_t **inicio, int valor);
 no_duplo_t* buscar_na_lista_encadeada_dupla(no_t** inicio, int valor);
 void remover_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor);
-void remover_da_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor, int posicao);
-
+void adicionar_na_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor, int posicao);
+void remover_da_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int posicao);
+no_duplo_t* buscar_na_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int posicao);
+int tamanho_da_lista_encadeada_dupla(no_duplo_t* inicio);
 
 #endif //LABORATORIO_LIBPRG_H
