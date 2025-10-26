@@ -5,7 +5,7 @@
 typedef struct no
 {
     int valor;
-    struct no *proximo;
+    struct no* proximo;
 } no_t;
 
 no_t* criar_lista_encadeada(int valor)
@@ -146,7 +146,7 @@ void destruir_lista_encadeada(no_t** inicio)
 int tamanho_da_lista_encadeada(no_t* inicio)
 {
     int quantidade_de_elementos = 0;
-    no_t *atual = inicio;
+    no_t* atual = inicio;
 
     for (int i = 0; atual; i++) // enquanto o atual for diferente de nulo
     {
@@ -196,6 +196,15 @@ void adicionar_na_posicao_da_lista_encadeada(no_t** inicio, int valor, int posic
 {
     no_t* atual = *inicio; // o nó atual passa a ser o início
     int indice = limitar_na_lista_encadeada(inicio, posicao); // indice limitado para inserção
+
+    if (indice == 0)
+    {
+        no_t* novo_no = criar_lista_encadeada(valor); // cria um novo nó
+        novo_no->proximo = *inicio; // o próximo do nó criado será o início
+        *inicio = novo_no; // o início passa a ser o novo nó
+        return; // retorna
+    }
+
     no_t* novo_no = criar_lista_encadeada(valor); // cria um novo nó com o valor desejado
 
     for (int i = 0; i < indice - 1; i++) // enquanto não estiver na posição desejada
@@ -212,7 +221,47 @@ bool lista_encadeada_vazia(no_t** inicio)
     return tamanho_da_lista_encadeada(*inicio) == 0;
 }
 
+no_t* buscar_na_posicao_da_lista_encadeada(no_t** inicio, int posicao)
+{
+    if (posicao < 0) return NULL; // se a posição for menor que zero, retorna nulo
+
+    no_t* atual = *inicio; // o atual passa a ser o início
+
+    for (int i = 0; atual; i++) // enquanto não estiver na posição
+    {
+        if (i == posicao) return atual; // se encontrar a posição, retorna o elemento dela
+        atual = atual->proximo; // se não encontrar, passa para o próximo
+    }
+
+    return NULL; // se não encontrar, retorna nulo
+}
+
 void remover_da_posicao_da_lista_encadeada(no_t** inicio, int posicao)
 {
-    if (lista_encadeada_vazia(inicio)) return;
+    if (lista_encadeada_vazia(inicio)) return; // se a lista estiver vazia, não faz nada
+
+    if (posicao < 0) return; // se a posição for menor que zero, não faz nada
+    if (posicao > tamanho_da_lista_encadeada(*inicio)) return; // se a posição for maior que o tamanho da lista, não faz nada
+
+    no_t* no_para_remover = NULL; // cria um nó auxiliar para ser apagado
+
+    if (posicao == 0) // se o índice for igual a zero, remove o primeiro elemento
+    {
+        no_para_remover = *inicio; // guarda o endereço do nó a ser removido
+        *inicio = (*inicio)->proximo; // o início da lista passa para o segundo elemento
+    }
+    else
+    {
+        no_t* anterior = *inicio; // o atual é o início
+
+        for (int i = 0; i < posicao - 1; i++) // enquanto posicao do anterior != posicao - 1
+        {
+            anterior = anterior->proximo; // passa para o próximo
+        }
+
+        no_para_remover = anterior->proximo; // quando chegar, o nó para remover se torna o próximo do anterior
+        anterior->proximo = no_para_remover->proximo; // e o próximo do anterior se torna o próximo do nó para remover
+    }
+
+    free(no_para_remover); // libera a memória do nó auxiliar
 }

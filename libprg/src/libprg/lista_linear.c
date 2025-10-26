@@ -175,6 +175,7 @@ int limitar_posicao_na_lista(lista_linear_t *ll, int posicao)
 {
     if (posicao > ll->tamanho) return ll->tamanho; // se a posição for maior que o tamanho, insere no final
     if (posicao < 0) return 0; // se a posição for menor que zero, insere na posição 0
+    return posicao; // caso contrário, retorna a própria posição
 }
 
 void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao)
