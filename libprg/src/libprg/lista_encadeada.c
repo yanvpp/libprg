@@ -290,6 +290,12 @@ void adicionar_na_posicao_da_lista_encadeada_circular(no_t** inicio, int valor, 
         return; // retorna
     }
 
+    if (posicao == 0) // se a posição for zero
+    {
+        adicionar_na_lista_encadeada_circular(inicio, valor); // insere normalmente
+        return; // retorna
+    }
+
     int tamanho_da_lista = tamanho_da_lista_encadeada_circular(*inicio); // tamanho da lista encadeada circular
     int indice = posicao; // variável auxiliar
     if (indice < 0) indice = 0; // se a posição for menor que zero, o índice se torna 0
