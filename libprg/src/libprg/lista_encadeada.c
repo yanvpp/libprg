@@ -143,6 +143,20 @@ void destruir_lista_encadeada(no_t** inicio)
     }
 }
 
+int tamanho_da_lista_encadeada(no_t* inicio)
+{
+    int quantidade_de_elementos = 0;
+    no_t *atual = inicio;
+
+    for (int i = 0; atual; i++) // enquanto o atual for diferente de nulo
+    {
+        atual = atual->proximo; // passa para o próximo
+        quantidade_de_elementos++; // aumenta a quantidade de elementos
+    }
+
+    return quantidade_de_elementos; // retorna a quantidade de elementos
+}
+
 void destruir_lista_encadeada_circular(no_t** inicio)
 {
     if (*inicio == NULL) // se a lista já estiver vazia
@@ -159,4 +173,46 @@ void destruir_lista_encadeada_circular(no_t** inicio)
         if (proximo == *inicio) break; // se o próximo for o início, interrompe e encerra o código
         atual = proximo; // o atual passa a ser o próximo
     }
+}
+
+int limitar_na_lista_encadeada(no_t** inicio, int posicao)
+{
+    int tamanho_da_lista = tamanho_da_lista_encadeada(*inicio);
+
+    if (posicao < 0) // se a posição desejada for menor que zero
+    {
+        return 0; // retorna a posição zero
+    }
+
+    if (posicao > tamanho_da_lista) // se a posição desejada for maior que zero
+    {
+        return tamanho_da_lista; // retorna a última posição da lista
+    }
+
+    return posicao; // caso contrário, retorna a própria posição
+}
+
+void adicionar_na_posicao_da_lista_encadeada(no_t** inicio, int valor, int posicao)
+{
+    no_t* atual = *inicio; // o nó atual passa a ser o início
+    int indice = limitar_na_lista_encadeada(inicio, posicao); // indice limitado para inserção
+    no_t* novo_no = criar_lista_encadeada(valor); // cria um novo nó com o valor desejado
+
+    for (int i = 0; i < indice - 1; i++) // enquanto não estiver na posição desejada
+    {
+        atual = atual->proximo; // percorre a lista encadeada até encontrar a posição
+    }
+
+    novo_no->proximo = atual->proximo; // o próximo do nó criado passa a ser o próximo do atual
+    atual->proximo = novo_no; // o próximo do atual passa a ser o nó criado
+}
+
+bool lista_encadeada_vazia(no_t** inicio)
+{
+    return tamanho_da_lista_encadeada(*inicio) == 0;
+}
+
+void remover_da_posicao_da_lista_encadeada(no_t** inicio, int posicao)
+{
+    if (lista_encadeada_vazia(inicio)) return;
 }

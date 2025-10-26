@@ -67,7 +67,10 @@ void destruir_lista_encadeada(no_t** inicio);
 no_t* criar_lista_encadeada_circular(int valor);
 void adicionar_na_lista_encadeada_circular(no_t** inicio, int valor);
 void destruir_lista_encadeada_circular(no_t **inicio);
-
+void adicionar_na_posicao_da_lista_encadeada(no_t** inicio, int valor, int posicao);
+int tamanho_da_lista_encadeada(no_t* inicio);
+int limitar_na_lista_encadeada(no_t** inicio, int posicao);
+bool lista_encadeada_vazia(no_t** inicio);
 
 // |-- LISTA ENCADEADA DUPLA --|
 
