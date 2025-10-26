@@ -69,3 +69,34 @@ void remover_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor)
     }
 }
 
+
+
+void remover_da_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int valor, int posicao)
+{
+    if (*inicio == NULL || posicao < 0) return; // se a lista estiver vazia, ou a posição for negativa, não faz nada
+
+    no_duplo_t* no_para_remover = *inicio; // o nó para remoção passa a ser o início
+
+    for (int i = 0; no_para_remover != NULL && i < posicao; i++) // enquanto não chegar na posição solicitada
+    {
+        no_para_remover = no_para_remover->proximo; // passa para o próximo
+    }
+
+    if (no_para_remover == NULL) return; // se a posição for inválida, não faz nada
+
+    if (no_para_remover->anterior != NULL)  // se o anterior do nó para ser removido for nulo
+    {
+        no_para_remover->anterior->proximo = no_para_remover->proximo; // o anterior do próximo do nó para remover passa a ser o próximo dele
+    } else // caso contrário
+    {
+        *inicio = no_para_remover->proximo; // o início passa a ser o próximo do nó para remover
+    }
+
+    if (no_para_remover->proximo != NULL) // se o nó para remover tiver próximo
+    {
+        no_para_remover->proximo->anterior = no_para_remover->anterior; // o anterior do próximo do nó para remover passa a ser o anterior dele
+    }
+
+    free(no_para_remover); // libera a memória do nó para remoção
+}
+
