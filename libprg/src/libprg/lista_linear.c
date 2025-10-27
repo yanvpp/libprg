@@ -56,8 +56,12 @@ void inserir_na_lista(lista_linear_t* ll, int valor)
 {
     if (lista_cheia(ll)) // se a lista estiver cheia
     {
-        realloc(ll->elementos, sizeof(int) * ll->capacidade * 2); // dobra o tamanho da lista
-        ll->capacidade *= 2; // dobra a capacidade da lista
+        int* novo = realloc(ll->elementos, sizeof(int) * ll->capacidade * 2); // auxiliar para segurança
+
+        if (!novo) exit(EXIT_FAILURE); // se não realocou corretamente, retorna erro
+
+        ll->elementos = novo; // se realocou corretamente, implementa o novo tamanho
+        ll->capacidade *= 2; // dobra a capacidade
     }
 
     if (ll->ordenada) // e se a lista for ordenada
@@ -77,11 +81,12 @@ int busca_binaria(lista_linear_t* ll, int valor)
     while (inicio <= fim) // enquanto o início for menor que o fim
     {
         int meio = inicio + (fim - inicio) / 2; // o meio será o meio da fila
+
         if (valor == ll->elementos[meio]) // se o valor que está no meio for igual ao valor que estamos buscando
         {
             return meio; // retorna o índice do meio
         }
-        if (ll->elementos[meio] < valor) // se o valor que está no meio for menor que o valo
+        if (ll->elementos[meio] < valor) // se o valor que está no meio for menor que o valor
         {
             inicio = meio + 1; // separa a metade da frente da lista e reinicia o processo
         }
@@ -163,17 +168,21 @@ void listar_lista_linear(lista_linear_t* ll)
 
 int inicio_lista_linear(lista_linear_t* ll)
 {
+    if (lista_vazia(ll)) return -1; // se a lista estiver vazia, retorna -1
+
     return ll->elementos[0]; // retorna o elemento que está no início da lista
 }
 
 int buscar_na_posicao_da_lista(lista_linear_t* ll, int posicao)
 {
-    return ll->elementos[posicao];
+    if (posicao < 0 || posicao > tamanho_lista_linear(ll) - 1) return -1; // se a posição for inválida, não faz nada
+
+    return ll->elementos[posicao]; // se for válida, retorna o valor que está na posição desejada
 }
 
-int limitar_posicao_na_lista(lista_linear_t *ll, int posicao)
+int limitar_posicao_na_lista(lista_linear_t* ll, int posicao)
 {
-    if (posicao > ll->tamanho) return ll->tamanho; // se a posição for maior que o tamanho, insere no final
+    if (posicao > ll->tamanho) return ll->tamanho - 1; // se a posição for maior que o tamanho, insere no final
     if (posicao < 0) return 0; // se a posição for menor que zero, insere na posição 0
     return posicao; // caso contrário, retorna a própria posição
 }
@@ -184,18 +193,21 @@ void inserir_na_posicao_da_lista(lista_linear_t* ll, int valor, int posicao)
 
     if (!ll->ordenada) // se não for ordenada
     {
-        inserir_na_lista_nao_ordenada(ll, ll->elementos[valor]); // coloca o valor que está na posição no fim da fila
+        inserir_na_lista_nao_ordenada(ll, ll->elementos[indice]); // coloca o valor que está na posição no fim da lista
         ll->elementos[indice] = valor; // insere o valor desejado na posição desejada
     }
-
-    inserir_na_lista_ordenada(ll, valor); // se for ordenada, insere na lista ordenada
+    else
+    {
+        inserir_na_lista_ordenada(ll, valor); // se for ordenada, insere na lista ordenada
+    }
 }
 
 void remover_na_posicao_da_lista(lista_linear_t* ll, int posicao)
 {
-    int indice = limitar_posicao_na_lista(ll, posicao);
+    if (posicao < 0 || posicao > tamanho_lista_linear(ll) - 1) return; // se a posição for inválida, não faz nada
 
-    remover_da_lista(ll, ll->elementos[indice]); // chama a função remover da lista, enviando a lista e o valor que está na posição
+    remover_da_lista(ll, ll->elementos[posicao]);
+    // chama a função remover da lista, enviando a lista e o valor que está na posição
 }
 
 void destruir_lista(lista_linear_t* ll)
