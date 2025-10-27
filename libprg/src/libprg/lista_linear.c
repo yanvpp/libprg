@@ -70,7 +70,7 @@ void inserir_na_lista(lista_linear_t* ll, int valor)
     }
     else
     {
-        inserir_na_lista_nao_ordenada(ll, valor); // caso contrário, chama a função que insere na não ordenada}
+        inserir_na_lista_nao_ordenada(ll, valor); // caso contrário, chama a função que insere na não ordenada
     }
 }
 
@@ -206,8 +206,18 @@ void remover_na_posicao_da_lista(lista_linear_t* ll, int posicao)
 {
     if (posicao < 0 || posicao > tamanho_lista_linear(ll) - 1) return; // se a posição for inválida, não faz nada
 
-    remover_da_lista(ll, ll->elementos[posicao]);
-    // chama a função remover da lista, enviando a lista e o valor que está na posição
+    if (ll->ordenada) // se a lista for ordenada
+    {
+        for (int i = posicao; i < ll->tamanho - 1; i++) // a partir da posição até o fim da lista
+        {
+            ll->elementos[i] = ll->elementos[i + 1]; // desloca os elementos da direita para a esquerda
+        }
+    } else // se não for ordenada
+    {
+        ll->elementos[posicao] = ll->tamanho - 1; // substitui o elemento da posição pelo último elemento da lista
+    }
+
+    ll->tamanho--; // diminui 1 do tamanho
 }
 
 void destruir_lista(lista_linear_t* ll)
