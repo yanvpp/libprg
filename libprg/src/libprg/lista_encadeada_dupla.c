@@ -29,7 +29,7 @@ void adicionar_na_lista_encadeada_dupla(no_duplo_t **inicio, int valor) {
     *inicio = novo_no_duplo; // e o início passa a ser o novo nó
 }
 
-no_duplo_t* buscar_na_lista_encadeada_dupla(no_t** inicio, int valor)
+no_duplo_t* buscar_na_lista_encadeada_dupla(no_duplo_t** inicio, int valor)
 {
     no_duplo_t* atual = *inicio; // o atual passa a ser o inicio
 
