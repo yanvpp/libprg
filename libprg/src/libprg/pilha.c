@@ -22,11 +22,11 @@ pilha_t* criar_pilha(int capacidade)
 
 int empilhar_pilha(pilha_t* p, int valor)
 {
-    if (pilha_cheia(p)) // se a pilha estiver cheia
+    /*if (pilha_cheia(p)) // se a pilha estiver cheia
     {
         realloc(p->elementos, sizeof(int) * p->capacidade * 2); // realoca o tamanho da pilha
         p->capacidade *= 2; // a capacidade é dobrada
-    }
+    }*/
 
     if (p->topo < p->capacidade - 1) // se a pilha ainda tiver espaço
     {
