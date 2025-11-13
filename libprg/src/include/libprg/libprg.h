@@ -20,7 +20,7 @@ bool pilha_vazia(pilha_t* p);
 int buscar_na_posicao_da_pilha(pilha_t* p, int posicao);
 void desempilhar_na_posicao(pilha_t* p, int posicao);
 
-//|-- FILA --|
+// |-- FILA --|
 
 typedef struct fila fila_t;
 
@@ -35,7 +35,7 @@ bool fila_vazia(fila_t* f);
 void listar_fila(fila_t *f);
 void destruir_fila(fila_t* f);
 
-//|-- LISTA LINEAR --|
+// |-- LISTA LINEAR --|
 
 typedef struct lista_linear lista_linear_t;
 
@@ -90,5 +90,9 @@ void adicionar_na_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int valo
 void remover_da_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int posicao);
 no_duplo_t* buscar_na_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int posicao);
 int tamanho_da_lista_encadeada_dupla(no_duplo_t* inicio);
+
+// |-- BUBBLE SORT --|
+
+void bubble_sort(int* vetor, int tamanho);
 
 #endif //LABORATORIO_LIBPRG_H
