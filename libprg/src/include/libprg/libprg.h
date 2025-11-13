@@ -91,8 +91,10 @@ void remover_da_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int posica
 no_duplo_t* buscar_na_posicao_da_lista_encadeada_dupla(no_duplo_t** inicio, int posicao);
 int tamanho_da_lista_encadeada_dupla(no_duplo_t* inicio);
 
-// |-- BUBBLE SORT --|
+// |-- ALGORITMOS DE ORDENAÇÃO --|
 
 void bubble_sort(int* vetor, int tamanho);
+void insertion_sort(int* vetor, int tamanho);
+
 
 #endif //LABORATORIO_LIBPRG_H
