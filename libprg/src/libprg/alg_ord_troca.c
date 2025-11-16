@@ -3,7 +3,8 @@
 //
 #include "libprg/libprg.h"
 
-void bubble_sort(int* vetor, int tamanho) {
+void bubble_sort(int* vetor, int tamanho)
+{
     for (int i = 0; i < tamanho - 1; i++) // para revisar a lista, partindo de cada elemento dela
     {
         for (int j = 0; j < tamanho - 1; j++) // para organizar a cada passagem
@@ -18,18 +19,44 @@ void bubble_sort(int* vetor, int tamanho) {
     }
 }
 
-void insertion_sort(int* vetor, int tamanho) {
+void insertion_sort(int* vetor, int tamanho)
+{
     for (int i = 1; i < tamanho; i++) // para percorrer o vetor e verificar a organização
     {
         int aux = vetor[i]; // auxiliar para armazenar o valor
         int j = i - 1; // define a posição para a comparação
 
-        while (j >= 0 && vetor[j] > aux) // enquanto j não estiver na posição inicial do vetor e o valor da posição for maior que o auxiliar
+        while (j >= 0 && vetor[j] > aux)
+        // enquanto j não estiver na posição inicial do vetor e o valor da posição for maior que o auxiliar
         {
             vetor[j + 1] = vetor[j]; // passa o elemento para trás
             j--; // retrocede uma casa para comparação
         }
 
         vetor[j + 1] = aux; // adiciona o elemento no buraco
+    }
+}
+
+void selection_sort(int* vetor, int tamanho)
+{
+    for (int i = 0; i < tamanho; i++) // para percorrer o vetor
+    {
+        int j = i + 1; // variável auxiliar para percorrer o vetor
+        int menor = vetor[i]; // auxiliar para as comparações
+
+        for (j; j < tamanho; j++) // percorre o por completo a cada passagem do i
+        {
+            if (vetor[j] < menor) // se o elemento na posição j for menor que o menor valor que encontramos
+            {
+                menor = vetor[j]; // o menor valor passa a ser o elemento da posição j
+            }
+        }
+
+        if (menor != vetor[i]) // se havia algum valor menor que o de referência
+        {
+            int aux = vetor[i]; // auxiliar = elemento na posição i do vetor
+            vetor[i] = menor; // o elemento da posição i passa a ser o menor valor que encontramos no vetor
+            vetor[j] = aux; // o elemento na posição j passa a ser o elemento que removemos para adicionar o menor
+        }
     }
 }
