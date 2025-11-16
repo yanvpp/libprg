@@ -41,22 +41,21 @@ void selection_sort(int* vetor, int tamanho)
 {
     for (int i = 0; i < tamanho; i++) // para percorrer o vetor
     {
-        int j = i + 1; // variável auxiliar para percorrer o vetor
-        int menor = vetor[i]; // auxiliar para as comparações
+        int index_menor = i; // auxiliar para as comparações
 
-        for (j; j < tamanho; j++) // percorre o por completo a cada passagem do i
+        for (int j = i + 1; j < tamanho; j++) // percorre o por completo a cada passagem do i
         {
-            if (vetor[j] < menor) // se o elemento na posição j for menor que o menor valor que encontramos
+            if (vetor[j] < vetor[index_menor]) // se o elemento na posição j for menor que o menor valor que temos
             {
-                menor = vetor[j]; // o menor valor passa a ser o elemento da posição j
+                index_menor = j; // o menor valor passa a ser o elemento da posição j
             }
         }
 
-        if (menor != vetor[i]) // se havia algum valor menor que o de referência
+        if (index_menor != i) // se havia algum valor menor que o de referência
         {
-            int aux = vetor[i]; // auxiliar = elemento na posição i do vetor
-            vetor[i] = menor; // o elemento da posição i passa a ser o menor valor que encontramos no vetor
-            vetor[j] = aux; // o elemento na posição j passa a ser o elemento que removemos para adicionar o menor
+            int aux = vetor[i]; // guarda o elemento da posição i do vetor
+            vetor[i] = vetor[index_menor]; // o elemento da posição i passa a ser o menor valor que encontramos no vetor
+            vetor[index_menor] = aux; // o elemento na posição em que estava o menor passa a ser o elemento que removemos
         }
     }
 }
