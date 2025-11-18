@@ -97,4 +97,10 @@ void bubble_sort(int* vetor, int tamanho);
 void insertion_sort(int* vetor, int tamanho);
 void selection_sort(int* vetor, int tamanho);
 
+// |-- ÁRVORE BINÁRIA --|
+
+typedef struct arvore_binaria no_avore;
+
+no_arvore *criar_no_arvore(int valor);
+
 #endif //LABORATORIO_LIBPRG_H
