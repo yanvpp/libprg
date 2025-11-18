@@ -99,8 +99,9 @@ void selection_sort(int* vetor, int tamanho);
 
 // |-- ÁRVORE BINÁRIA --|
 
-typedef struct arvore_binaria no_avore;
+typedef struct arvore_binaria no_arvore;
 
 no_arvore *criar_no_arvore(int valor);
+void destruir_no_arvore(no_arvore *no);
 
 #endif //LABORATORIO_LIBPRG_H

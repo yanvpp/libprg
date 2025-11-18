@@ -16,3 +16,11 @@ no_arvore *criar_no_arvore(int valor) {
     no->esquerda = no->direita = NULL;
     return no;
 }
+
+void destruir_no_arvore(no_arvore *no) {
+    if (no) {
+        destruir_no_arvore(no->esquerda);
+        destruir_no_arvore(no->direita);
+        free(no);
+    }
+}
