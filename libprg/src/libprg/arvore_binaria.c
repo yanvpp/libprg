@@ -3,6 +3,7 @@
 //
 #include "libprg/libprg.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct arvore_binaria {
     int valor;
@@ -33,4 +34,11 @@ no_arvore *inserir_na_arvore(no_arvore *raiz, int valor) {
         raiz->direita = inserir_na_arvore(raiz->direita, valor);
     }
     return raiz;
+}
+
+bool busca_na_arvore(no_arvore *raiz, int valor) {
+    if (!raiz) return false;
+    if (valor == raiz->valor) return true;
+    if (valor < raiz->valor) return busca_na_arvore(raiz->esquerda, valor);
+    return busca_na_arvore(raiz->direita, valor);
 }

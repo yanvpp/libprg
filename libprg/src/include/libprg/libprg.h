@@ -104,5 +104,6 @@ typedef struct arvore_binaria no_arvore;
 no_arvore *criar_no_arvore(int valor);
 void destruir_no_arvore(no_arvore *no);
 no_arvore *inserir_na_arvore(no_arvore *raiz, int valor);
+bool busca_na_arvore(no_arvore *raiz, int valor);
 
 #endif //LABORATORIO_LIBPRG_H
