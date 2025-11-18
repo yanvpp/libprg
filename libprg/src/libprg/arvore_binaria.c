@@ -24,3 +24,13 @@ void destruir_no_arvore(no_arvore *no) {
         free(no);
     }
 }
+
+no_arvore *inserir_na_arvore(no_arvore *raiz, int valor) {
+    if (!raiz) return criar_no_arvore(valor);
+    if (valor < raiz->valor) {
+        raiz->esquerda = inserir_na_arvore(raiz->esquerda, valor);
+    } else if (valor > raiz->valor) {
+        raiz->direita = inserir_na_arvore(raiz->direita, valor);
+    }
+    return raiz;
+}
