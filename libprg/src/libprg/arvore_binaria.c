@@ -51,9 +51,9 @@ no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor) {
         raiz->direita = remover_valor_da_arvore(raiz->direita, valor);
     } else {
         if (!raiz->esquerda || !raiz->direita) {
-
+            // completar
         } else {
-
+            // completar
         }
     }
     return raiz;
