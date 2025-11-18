@@ -42,3 +42,19 @@ bool busca_na_arvore(no_arvore *raiz, int valor) {
     if (valor < raiz->valor) return busca_na_arvore(raiz->esquerda, valor);
     return busca_na_arvore(raiz->direita, valor);
 }
+
+no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor) {
+    if (!raiz) return NULL;
+    if (valor < raiz->valor) {
+        raiz->esquerda = remover_valor_da_arvore(raiz->esquerda, valor);
+    } else if (valor > raiz->valor) {
+        raiz->direita = remover_valor_da_arvore(raiz->direita, valor);
+    } else {
+        if (!raiz->esquerda || !raiz->direita) {
+
+        } else {
+
+        }
+    }
+    return raiz;
+}

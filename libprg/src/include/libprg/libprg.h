@@ -105,5 +105,6 @@ no_arvore *criar_no_arvore(int valor);
 void destruir_no_arvore(no_arvore *no);
 no_arvore *inserir_na_arvore(no_arvore *raiz, int valor);
 bool busca_na_arvore(no_arvore *raiz, int valor);
+no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor);
 
 #endif //LABORATORIO_LIBPRG_H
