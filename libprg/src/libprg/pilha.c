@@ -70,7 +70,7 @@ void imprimir_pilha(pilha_t *p)
 {
     for (int i = 0; i <= p->topo; i++) // percorre a pilha
     {
-        printf("%d\n", p->elementos[i]); // imprime o elemento de cada posição na pilha
+        printf("%d\t", p->elementos[i]); // imprime o elemento de cada posição na pilha
     }
 }
 
