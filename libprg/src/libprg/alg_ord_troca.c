@@ -59,3 +59,8 @@ void selection_sort(int* vetor, int tamanho)
         }
     }
 }
+
+void merge_sort(int* vetor, int tamanho)
+{
+
+}
