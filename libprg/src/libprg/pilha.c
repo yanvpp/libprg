@@ -21,7 +21,7 @@ pilha_t* criar_pilha(int capacidade)
     return p; // retorna a estrutura pilha criada
 }
 
-int empilhar_pilha(pilha_t* p, int valor)
+void empilhar_pilha(pilha_t* p, int valor)
 {
     /*if (pilha_cheia(p)) // se a pilha estiver cheia
     {
@@ -32,9 +32,7 @@ int empilhar_pilha(pilha_t* p, int valor)
     {
         p->topo++; // o topo passa uma casa para frente
         p->elementos[p->topo] = valor; // o novo elemento é adicionado no topo
-        return 1; // retorna que a operação foi bem sucedida
     }
-    return 0; // retorna que a operação não foi concluída com sucesso
 }
 
 int desempilhar_pilha(pilha_t* p)
@@ -72,7 +70,7 @@ void imprimir_pilha(pilha_t *p)
 {
     for (int i = 0; i <= p->topo; i++) // percorre a pilha
     {
-        printf("%d\n", buscar_na_posicao_da_pilha(p, i)); // imprime o elemento de cada posição na pilha
+        printf("%d\n", p->elementos[i]); // imprime o elemento de cada posição na pilha
     }
 }
 
