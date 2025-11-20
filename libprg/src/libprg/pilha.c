@@ -28,7 +28,6 @@ int empilhar_pilha(pilha_t* p, int valor)
         realloc(p->elementos, sizeof(int) * p->capacidade * 2); // realoca o tamanho da pilha
         p->capacidade *= 2; // a capacidade é dobrada
     }*/
-
     if (p->topo < p->capacidade - 1) // se a pilha ainda tiver espaço
     {
         p->topo++; // o topo passa uma casa para frente
@@ -71,15 +70,10 @@ int* listar_pilha(pilha_t* p)
 
 void imprimir_pilha(pilha_t *p)
 {
-    pilha_t* aux = criar_pilha(p->topo + 1);
-
-    for (int i = 0; i <= p->topo + 1; i++)
+    for (int i = 0; i <= p->topo + 1; i++) // percorre a pilha
     {
-        printf("%d\n", topo_pilha(aux));
-        desempilhar_pilha(aux);
+        printf("%d\n", buscar_na_posicao_da_pilha(p, i)); // imprime o elemento de cada posição na pilha
     }
-
-    destruir_pilha(aux);
 }
 
 int tamanho_pilha(pilha_t* p)
@@ -104,7 +98,7 @@ bool pilha_cheia(pilha_t *p)
 
 bool pilha_vazia(pilha_t* p)
 {
-    return p->topo == 0; // verifica se a pilha está vazia
+    return p->topo == -1; // verifica se a pilha está vazia
 }
 
 int buscar_na_posicao_da_pilha(pilha_t* p, int posicao)
