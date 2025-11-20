@@ -19,6 +19,7 @@ bool pilha_cheia(pilha_t *p);
 bool pilha_vazia(pilha_t* p);
 int buscar_na_posicao_da_pilha(pilha_t* p, int posicao);
 void desempilhar_na_posicao(pilha_t* p, int posicao);
+int* imprimir_pilha(pilha_t *p);
 
 // |-- FILA --|
 
@@ -96,6 +97,7 @@ int tamanho_da_lista_encadeada_dupla(no_duplo_t* inicio);
 void bubble_sort(int* vetor, int tamanho);
 void insertion_sort(int* vetor, int tamanho);
 void selection_sort(int* vetor, int tamanho);
+void merge_sort(int* vetor, int tamanho);
 
 // |-- ÁRVORE BINÁRIA --|
 

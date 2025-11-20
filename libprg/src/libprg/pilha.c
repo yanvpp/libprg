@@ -68,6 +68,19 @@ int* listar_pilha(pilha_t* p)
     return copia_do_elemento; // retorna o array com os mesmos elementos da pilha
 }
 
+int* imprimir_pilha(pilha_t *p)
+{
+    pilha_t* aux = criar_pilha(p->topo + 1);
+
+    for (int i = 0; i <= p->topo + 1; i++)
+    {
+        printf("%d\n", topo_pilha(aux));
+        desempilhar_pilha(aux);
+    }
+
+    destruir_pilha(aux);
+}
+
 int tamanho_pilha(pilha_t* p)
 {
     if (p->topo >= 0) // se a pilha não estiver vazia
