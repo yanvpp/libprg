@@ -19,7 +19,7 @@ bool pilha_cheia(pilha_t *p);
 bool pilha_vazia(pilha_t* p);
 int buscar_na_posicao_da_pilha(pilha_t* p, int posicao);
 void desempilhar_na_posicao(pilha_t* p, int posicao);
-int* imprimir_pilha(pilha_t *p);
+void imprimir_pilha(pilha_t *p);
 
 // |-- FILA --|
 

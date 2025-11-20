@@ -1,6 +1,7 @@
 #include "libprg/libprg.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 typedef struct pilha // definindo a struct pilha
 {
@@ -68,7 +69,7 @@ int* listar_pilha(pilha_t* p)
     return copia_do_elemento; // retorna o array com os mesmos elementos da pilha
 }
 
-int* imprimir_pilha(pilha_t *p)
+void imprimir_pilha(pilha_t *p)
 {
     pilha_t* aux = criar_pilha(p->topo + 1);
 
