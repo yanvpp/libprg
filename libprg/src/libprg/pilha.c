@@ -70,7 +70,7 @@ int* listar_pilha(pilha_t* p)
 
 void imprimir_pilha(pilha_t *p)
 {
-    for (int i = 0; i <= p->topo + 1; i++) // percorre a pilha
+    for (int i = 0; i <= p->topo; i++) // percorre a pilha
     {
         printf("%d\n", buscar_na_posicao_da_pilha(p, i)); // imprime o elemento de cada posição na pilha
     }
