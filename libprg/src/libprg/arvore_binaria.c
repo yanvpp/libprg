@@ -109,3 +109,14 @@ int menor_valor_arvore(no_arvore *raiz)
 
     return atual->valor;
 }
+
+int altura_arvore(no_arvore* raiz)
+{
+    if (!raiz) return -1;
+
+    int altura_esquerda = altura_arvore(raiz->esquerda);
+    int altura_direita = altura_arvore(raiz->direita);
+
+    if (altura_direita > altura_direita) return altura_direita + 1;
+    return altura_direita + 1;
+}
