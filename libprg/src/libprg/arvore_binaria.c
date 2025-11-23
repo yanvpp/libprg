@@ -11,7 +11,7 @@ typedef struct arvore_binaria {
     struct arvore_binaria *direita;
 }no_arvore;
 
-no_arvore *criar_no_arvore(int valor) {
+no_arvore *criar_arvore(int valor) {
     no_arvore *no = (no_arvore *)malloc(sizeof(no_arvore));
     no->valor = valor;
     no->esquerda = no->direita = NULL;
@@ -27,7 +27,7 @@ void destruir_no_arvore(no_arvore *no) {
 }
 
 no_arvore *inserir_na_arvore(no_arvore *raiz, int valor) {
-    if (!raiz) return criar_no_arvore(valor);
+    if (!raiz) return criar_arvore(valor);
     if (valor < raiz->valor) {
         raiz->esquerda = inserir_na_arvore(raiz->esquerda, valor);
     } else if (valor > raiz->valor) {
