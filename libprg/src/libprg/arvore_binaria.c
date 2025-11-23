@@ -81,3 +81,31 @@ no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor) {
     }
     return raiz;
 }
+
+int maior_valor_arvore(no_arvore *raiz)
+{
+    if (!raiz) return -1;
+
+    no_arvore* atual = raiz;
+
+    while (atual->direita)
+    {
+        atual = atual->direita;
+    }
+
+    return atual->valor;
+}
+
+int menor_valor_arvore(no_arvore *raiz)
+{
+    if (!raiz) return -1;
+
+    no_arvore* atual = raiz;
+
+    while (atual->esquerda)
+    {
+        atual = atual->esquerda;
+    }
+
+    return atual->valor;
+}
