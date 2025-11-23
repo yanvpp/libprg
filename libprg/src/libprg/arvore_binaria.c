@@ -43,18 +43,41 @@ bool busca_na_arvore(no_arvore *raiz, int valor) {
     return busca_na_arvore(raiz->direita, valor);
 }
 
+no_arvore* encontrar_no_minimo_arvore(no_arvore *raiz)
+{
+    no_arvore* atual = raiz;
+
+    while (atual && atual->esquerda)
+    {
+        atual = atual->esquerda;
+    }
+    return atual;
+}
+
 no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor) {
     if (!raiz) return NULL;
+
     if (valor < raiz->valor) {
         raiz->esquerda = remover_valor_da_arvore(raiz->esquerda, valor);
     } else if (valor > raiz->valor) {
         raiz->direita = remover_valor_da_arvore(raiz->direita, valor);
     } else {
-        if (!raiz->esquerda || !raiz->direita) {
-            // completar
-        } else {
-            // completar
+        if (!raiz->esquerda)
+        {
+            no_arvore *aux = raiz->direita;
+            free(raiz);
+            return aux;
         }
+            if (!raiz->direita) {
+            no_arvore *aux = raiz->esquerda;
+            free(raiz);
+            return aux;
+        }
+        no_arvore* auxiliar = encontrar_no_minimo_arvore(raiz->direita);
+
+        raiz->valor = auxiliar->valor;
+
+        raiz->direita = remover_valor_da_arvore(raiz->direita, auxiliar->valor);
     }
     return raiz;
 }
