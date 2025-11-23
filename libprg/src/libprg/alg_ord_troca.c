@@ -1,6 +1,8 @@
 //
 // Created by aluno on 13/11/2025.
 //
+#include <stdlib.h>
+
 #include "libprg/libprg.h"
 
 void bubble_sort(int* vetor, int tamanho)
@@ -60,7 +62,66 @@ void selection_sort(int* vetor, int tamanho)
     }
 }
 
-void merge_sort(int* vetor, int tamanho)
+void merge(int* vetor, int esquerda, int meio, int direita)
 {
+    int i, j, k;
 
+    int vetor_esquerda = meio - esquerda + 1;
+    int vetor_direita = direita - meio;
+
+    int *l = malloc(vetor_esquerda * sizeof(int));
+    int *r = malloc(vetor_direita * sizeof(int));
+
+    for (i = 0; i < vetor_esquerda; i++)
+    {
+        l[i] = vetor[esquerda + i];
+    }
+    for (j = 0; j < vetor_direita; j++)
+    {
+        r[j] = vetor[meio + 1 + j];
+    }
+
+    i = 0, j = 0; k = esquerda;
+
+    while (i < vetor_esquerda && j < vetor_direita)
+    {
+        if (l[i] <= r[j])
+        {
+            vetor[k] = l[i];
+            i++;
+        } else
+        {
+            vetor[k] = r[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < vetor_esquerda) {
+        vetor[k] = l[i];
+        i++;
+        k++;
+    }
+
+    while (j < vetor_direita) {
+        vetor[k] = r[j];
+        j++;
+        k++;
+    }
+
+    free(l);
+    free(r);
+}
+
+void merge_sort(int* vetor, int esquerda, int direita)
+{
+    int meio = (esquerda + direita) / 2;
+
+    if (esquerda < direita)
+    {
+        merge_sort(vetor, esquerda, meio);
+        merge_sort(vetor, meio + 1, direita);
+
+        merge(vetor, esquerda, meio, direita);
+    }
 }
