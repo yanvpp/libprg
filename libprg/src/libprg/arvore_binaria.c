@@ -18,10 +18,10 @@ no_arvore *criar_arvore(int valor) {
     return no;
 }
 
-void destruir_no_arvore(no_arvore *no) {
+void destruir_arvore(no_arvore *no) {
     if (no) {
-        destruir_no_arvore(no->esquerda);
-        destruir_no_arvore(no->direita);
+        destruir_arvore(no->esquerda);
+        destruir_arvore(no->direita);
         free(no);
     }
 }
