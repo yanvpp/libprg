@@ -125,3 +125,37 @@ void merge_sort(int* vetor, int esquerda, int direita)
         merge(vetor, esquerda, meio, direita);
     }
 }
+
+int particiona(int* vetor, int esquerda, int direita)
+{
+    int pivo = vetor[direita];
+    int i = esquerda - 1;
+
+    for (int j = esquerda; j <= direita; j++)
+    {
+        if (vetor[j] <= pivo)
+        {
+            i++;
+            int aux = vetor[i];
+            vetor[i] = vetor[j];
+            vetor[j] = aux;
+        }
+    }
+
+    int aux = vetor[i + 1];
+    vetor[i + 1] = vetor[direita];
+    vetor[direita] = aux;
+
+    return i + 1;
+}
+
+void quick_sort(int* vetor, int esquerda, int direita)
+{
+    if (esquerda < direita)
+    {
+        int pi = particiona(vetor, esquerda, direita);
+
+        quick_sort(vetor, esquerda, pi - 1);
+        quick_sort(vetor, pi + 1, direita);
+    }
+}
