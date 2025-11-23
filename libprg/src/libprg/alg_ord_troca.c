@@ -131,7 +131,7 @@ int particiona(int* vetor, int esquerda, int direita)
     int pivo = vetor[direita];
     int i = esquerda - 1;
 
-    for (int j = esquerda; j <= direita; j++)
+    for (int j = esquerda; j < direita; j++)
     {
         if (vetor[j] <= pivo)
         {
