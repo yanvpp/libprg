@@ -2,7 +2,6 @@
 // Created by aluno on 18/11/2025.
 //
 #include <math.h>
-
 #include "libprg/libprg.h"
 #include <stdlib.h>
 #include <stdbool.h>
