@@ -113,5 +113,10 @@ no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor);
 int maior_valor_arvore(no_arvore *raiz);
 int menor_valor_arvore(no_arvore *raiz);
 int altura_arvore(no_arvore *raiz);
+void imprimir_arvore_em_ordem(no_arvore *raiz);
+void imprimir_arvore_em_pre_ordem(no_arvore *raiz);
+void imprimir_arvore_em_pos_ordem(no_arvore *raiz);
+// void imprimir_arvore_por_niveis(no_arvore *raiz);
+
 
 #endif //LABORATORIO_LIBPRG_H

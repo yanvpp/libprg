@@ -1,9 +1,12 @@
 //
 // Created by aluno on 18/11/2025.
 //
+#include <math.h>
+
 #include "libprg/libprg.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 typedef struct arvore_binaria {
     int valor;
@@ -120,3 +123,46 @@ int altura_arvore(no_arvore* raiz)
     if (altura_direita > altura_esquerda) return altura_direita + 1;
     return altura_esquerda + 1;
 }
+
+void imprimir_arvore_em_ordem(no_arvore *raiz) {
+    if (raiz) {
+        imprimir_arvore_em_ordem(raiz->esquerda);
+        printf("%d\t", raiz->valor);
+        imprimir_arvore_em_ordem(raiz->direita);
+    }
+}
+
+void imprimir_arvore_em_pre_ordem(no_arvore *raiz) {
+    if (raiz) {
+        printf("%d\t", raiz->valor);
+        imprimir_arvore_em_ordem(raiz->esquerda);
+        imprimir_arvore_em_ordem(raiz->direita);
+    }
+}
+
+void imprimir_arvore_em_pos_ordem(no_arvore *raiz) {
+    if (raiz) {
+        imprimir_arvore_em_ordem(raiz->esquerda);
+        imprimir_arvore_em_ordem(raiz->direita);
+        printf("%d\t", raiz->valor);
+    }
+}
+
+// void imprimir_arvore_por_niveis(no_arvore *raiz) {
+//
+//     fila_t* x = criar_fila();
+//
+//     while (raiz) {
+//         printf("%d\t", raiz->valor);
+//
+//         if (raiz->esquerda) {
+//             enfileirar(x, raiz->esquerda->valor);
+//         }
+//
+//         if (raiz->direita) {
+//             enfileirar(x, raiz->direita->valor);
+//         }
+//
+//         ;
+//     }
+// }
