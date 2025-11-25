@@ -12,10 +12,10 @@ typedef struct arvore_binaria {
 }no_arvore;
 
 no_arvore *criar_arvore(int valor) {
-    no_arvore *raiz = malloc(sizeof(no_arvore));
-    raiz->valor = valor;
-    raiz->esquerda = raiz->direita = NULL;
-    return raiz;
+    no_arvore *galho = malloc(sizeof(no_arvore));
+    galho->valor = valor;
+    galho->esquerda = galho->direita = NULL;
+    return galho;
 }
 
 void destruir_arvore(no_arvore *raiz) {
