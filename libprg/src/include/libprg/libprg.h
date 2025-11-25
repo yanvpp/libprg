@@ -105,7 +105,7 @@ void quick_sort(int* vetor, int esquerda, int direita);
 typedef struct arvore_binaria no_arvore;
 
 no_arvore *criar_arvore(int valor);
-void destruir_arvore(no_arvore *no);
+void destruir_arvore(no_arvore *raiz);
 no_arvore *inserir_na_arvore(no_arvore *raiz, int valor);
 bool busca_na_arvore(no_arvore *raiz, int valor);
 no_arvore* encontrar_no_minimo_arvore(no_arvore *raiz);

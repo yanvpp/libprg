@@ -12,17 +12,17 @@ typedef struct arvore_binaria {
 }no_arvore;
 
 no_arvore *criar_arvore(int valor) {
-    no_arvore *no = (no_arvore *)malloc(sizeof(no_arvore));
-    no->valor = valor;
-    no->esquerda = no->direita = NULL;
-    return no;
+    no_arvore *raiz = malloc(sizeof(no_arvore));
+    raiz->valor = valor;
+    raiz->esquerda = raiz->direita = NULL;
+    return raiz;
 }
 
-void destruir_arvore(no_arvore *no) {
-    if (no) {
-        destruir_arvore(no->esquerda);
-        destruir_arvore(no->direita);
-        free(no);
+void destruir_arvore(no_arvore *raiz) {
+    if (raiz) {
+        destruir_arvore(raiz->esquerda);
+        destruir_arvore(raiz->direita);
+        free(raiz);
     }
 }
 
