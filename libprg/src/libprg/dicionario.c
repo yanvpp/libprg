@@ -44,7 +44,8 @@ int hash(const char *chave, int m)
     int soma = 0;
 
     for (int i = 0; chave[i] != '\0'; i++) {
-        soma += (i + 1) * chave[i];
+        int valor_do_char = chave[i]*1;
+        soma += (i + 1) * valor_do_char;
     }
 
     return soma % m;
