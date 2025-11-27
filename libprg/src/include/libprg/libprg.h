@@ -118,13 +118,15 @@ void imprimir_arvore_em_pre_ordem(no_arvore *raiz);
 void imprimir_arvore_em_pos_ordem(no_arvore *raiz);
 // void imprimir_arvore_por_niveis(no_arvore *raiz);
 
-
 // |-- ÁRVORE AVL --|
 
 typedef struct arvore_avl_t no_avl_t;
-
+no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor);
+no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor);
 no_avl_t* rotacao_avl_esquerda(no_avl_t* v);
 no_avl_t* rotacao_avl_direita(no_avl_t* v);
+no_avl_t* rotacao_dupla_direita(no_avl_t* v);
+no_avl_t* rotacao_dupla_esquerda(no_avl_t* v);
 
 // |-- DICIONÁRIO (HASH TABLE) --|
 
