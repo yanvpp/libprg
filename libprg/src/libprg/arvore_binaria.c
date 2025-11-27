@@ -165,3 +165,75 @@ void imprimir_arvore_em_pos_ordem(no_arvore *raiz) {
 //         ;
 //     }
 // }
+
+// |------------------- ÁRVORE AVL ----------------------|
+
+#define max(a, b) ((a) > (b) ? (a) : (b))
+
+typedef struct arvore_avl_t {
+    int valor;
+    int altura;
+    struct arvore_avl_t *esquerda;
+    struct arvore_avl_t *direita;
+} no_avl_t;
+
+no_avl_t* criar_arvore_avl(int valor, int altura) {
+    no_avl_t* u = malloc(sizeof(no_avl_t));
+    u->valor = valor;
+    u->altura = altura;
+    u->esquerda = NULL;
+    u->direita = NULL;
+    return u;
+}
+
+no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor) {
+
+}
+
+no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor) {
+
+}
+
+void imprimir_arvore_avl_profundidade(no_avl_t* v) {}
+
+void imprimir_arvore_avl_largura(no_avl_t* v) {}
+
+no_avl_t* rotacao_avl_esquerda(no_avl_t* v) {
+    no_avl_t* u = v->direita;
+
+    v->direita = u->esquerda;
+
+    u->esquerda = v;
+
+    v->altura = max(v->esquerda->altura, v->direita->altura + 1);
+
+    u->altura = max(u->esquerda->altura, u->direita->altura + 1);
+
+    return u;
+}
+
+no_avl_t* rotacao_avl_direita(no_avl_t* v) {
+    no_avl_t* u = v->esquerda;
+
+    v->esquerda = u->direita;
+
+    u->direita = v;
+
+    v->altura = max(v->direita->altura, v->esquerda->altura + 1);
+
+    u->altura = max(u->direita->altura, u->esquerda->altura + 1);
+
+    return u;
+}
+
+no_avl_t* rotacao_dupla_direita(no_avl_t* v) {
+    v->esquerda = rotacao_avl_esquerda(v->esquerda);
+
+    return rotacao_avl_direita(v);
+}
+
+no_avl_t* rotacao_dupla_esquerda(no_avl_t* v) {
+    v->direita = rotacao_avl_esquerda(v->direita);
+
+    return rotacao_avl_direita(v);
+}
