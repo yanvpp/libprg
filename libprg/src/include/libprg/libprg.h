@@ -123,6 +123,8 @@ void imprimir_arvore_em_pos_ordem(no_arvore *raiz);
 typedef struct arvore_avl_t no_avl_t;
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor);
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor);
+void imprimir_arvore_avl_profundidade(no_avl_t* v);
+void imprimir_arvore_avl_largura(no_avl_t* v);
 no_avl_t* rotacao_avl_esquerda(no_avl_t* v);
 no_avl_t* rotacao_avl_direita(no_avl_t* v);
 no_avl_t* rotacao_dupla_direita(no_avl_t* v);
