@@ -126,4 +126,24 @@ typedef struct arvore_avl_t no_avl_t;
 no_avl_t* rotacao_avl_esquerda(no_avl_t* v);
 no_avl_t* rotacao_avl_direita(no_avl_t* v);
 
+// |-- DICIONÁRIO (HASH TABLE) --|
+
+typedef struct {
+    char *cpf;
+    char *nome;
+    char *email;
+} pessoa_t;
+
+typedef struct pessoa_t;
+typedef struct no no_t;
+typedef struct dicionario dicionario_t;
+dicionario_t *criar_dicionario(int m);
+int hash(const char *chave, int m);
+void destruir_pessoa(pessoa_t *pessoa);
+void destruir_no(no_t *no);
+void destruir_dicionario(dicionario_t *d);
+bool inserir(dicionario_t *d, char *chave, pessoa_t *valor);
+pessoa_t *buscar(dicionario_t *d, char *chave);
+void imprimir_pessoa(dicionario_t *d, char *chave);
+
 #endif //LABORATORIO_LIBPRG_H
