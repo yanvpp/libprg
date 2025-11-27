@@ -16,7 +16,6 @@ set(SOURCES
         src/libprg/lista_encadeada_dupla.c
         src/libprg/alg_ord_troca.c
         src/libprg/arvore_binaria.c
-        src/libprg/arvore_avl.c
         src/libprg/dicionario.c
 )
 
