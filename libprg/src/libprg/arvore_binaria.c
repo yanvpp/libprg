@@ -192,6 +192,12 @@ int altura_arvore_avl(no_avl_t* v)
     return v->altura; // caso contrário, retorna a altura
 }
 
+int fator_de_balanceamento(no_avl_t* v)
+{
+    if (!v) return 0; // se a árvore estiver vazia, retorna 0, caso contrário
+    return altura_arvore_avl(v->esquerda) - altura_arvore_avl(v->direita); // retorna a diferença do tamanho de cada lado
+}
+
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor) {
 
 }
