@@ -186,6 +186,12 @@ no_avl_t* criar_arvore_avl(int valor, int altura) {
     return u;
 }
 
+int altura_arvore_avl(no_avl_t* v)
+{
+    if (!v) return 0; // se a árvore estiver vazia, retorna tamanho 0
+    return v->altura; // caso contrário, retorna a altura
+}
+
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor) {
 
 }
