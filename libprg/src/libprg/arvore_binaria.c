@@ -246,8 +246,54 @@ no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
     return balancear_arvore_avl(v);
 }
 
-no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor) {
+no_avl_t* encontrar_valor_minimo_arvore_avl(no_avl_t* v)
+{
+    no_avl_t* atual = v;
+    while (atual && atual->esquerda)
+    {
+        atual = atual->esquerda;
+    }
+    return atual;
+}
 
+no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor) {
+    if (!v) return NULL;
+
+    if (valor < v->valor)
+    {
+        v->esquerda = remover_da_arvore_avl(v->esquerda, valor);
+    } else if (valor > v->valor)
+    {
+        v->direita = remover_da_arvore_avl(v->direita, valor);
+    }
+
+    if (!v->esquerda || !v->direita)
+    {
+        no_avl_t* aux = v->esquerda ? v->esquerda : v->direita;
+
+        if (!aux)
+        {
+            aux = v;
+            v = NULL;
+        } else
+        {
+            v->valor = aux->valor;
+            v->esquerda = aux->esquerda;
+            v->direita = aux->direita;
+            v->altura = aux->altura;
+
+            free(aux);
+        }
+    } else
+    {
+        no_avl_t* aux = encontrar_no_minimo_arvore(v->direita);
+        v->valor = aux->valor;
+        v->direita = remover_da_arvore_avl(v->direita, aux->valor);
+    }
+
+    if (!v) return NULL;
+
+    return balancear_arvore_avl(v);
 }
 
 void imprimir_arvore_avl_profundidade(no_avl_t* v) {}
