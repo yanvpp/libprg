@@ -338,3 +338,13 @@ no_avl_t* rotacao_dupla_esquerda(no_avl_t* v) {
 
     return rotacao_avl_esquerda(v);
 }
+
+void destruir_arvore_avl(no_avl_t* raiz)
+{
+    if (raiz)
+    {
+        destruir_arvore_avl(raiz->esquerda);
+        destruir_arvore_avl(raiz->direita);
+        free(raiz);
+    }
+}

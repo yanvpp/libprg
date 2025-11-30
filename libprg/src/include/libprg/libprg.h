@@ -121,6 +121,8 @@ void imprimir_arvore_em_pos_ordem(no_arvore *raiz);
 // |-- ÁRVORE AVL --|
 
 typedef struct arvore_avl_t no_avl_t;
+no_avl_t* criar_arvore_avl(int valor, int altura);
+void destruir_arvore_avl(no_avl_t* raiz);
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v,int valor);
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor);
 void imprimir_arvore_avl_profundidade(no_avl_t* v);
