@@ -243,7 +243,7 @@ no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
     return v; // retorna o nó existente
     }
 
-    v->altura = 1 + max(altura_arvore_avl(v->esquerda), altura_arvore_avl(v->direita));
+    return balancear_arvore_avl(v);
 }
 
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor) {
