@@ -228,7 +228,7 @@ no_avl_t* balancear_arvore_avl(no_avl_t* v)
     return v; // retorna a árvore balanceada
 }
 
-no_avl_t* inserir_na_arvore_avl(no_avl_t* v,int valor)
+no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
 {
     if (!v) return criar_arvore_avl(valor, 1); // se não tiver árvore, cria uma
 
@@ -258,7 +258,6 @@ no_avl_t* rotacao_avl_esquerda(no_avl_t* v) {
     no_avl_t* u = v->direita;
 
     v->direita = u->esquerda;
-
     u->esquerda = v;
 
     v->altura = max(v->esquerda->altura, v->direita->altura + 1);
@@ -289,7 +288,7 @@ no_avl_t* rotacao_dupla_direita(no_avl_t* v) {
 }
 
 no_avl_t* rotacao_dupla_esquerda(no_avl_t* v) {
-    v->direita = rotacao_avl_esquerda(v->direita);
+    v->direita = rotacao_avl_direita(v->direita);
 
-    return rotacao_avl_direita(v);
+    return rotacao_avl_esquerda(v);
 }
