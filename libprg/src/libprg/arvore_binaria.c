@@ -206,8 +206,8 @@ no_avl_t* balancear_arvore_avl(no_avl_t* v)
 
     int fator = fator_de_balanceamento(v); // obtém o fator de balanceamento
 
-    // se a subárvore da esquerda for maior
-    if (fator > 1)
+    if (fator > 1) // se a subárvore da esquerda for maior
+
     {
         if (fator_de_balanceamento(v->esquerda) >= 0) // se a "subsubárvore" da esquerda estiver maior
         {
@@ -216,12 +216,11 @@ no_avl_t* balancear_arvore_avl(no_avl_t* v)
         return rotacao_dupla_direita(v); // se a da direita estiver maior
     }
 
-    // se a subárvore da direita for maior
-    if (fator < -1)
+    if (fator < -1) // se a subárvore da direita for maior
     {
-        if (fator_de_balanceamento(v->direita) <= 0)
+        if (fator_de_balanceamento(v->direita) <= 0) // se a "subsubárvore" da direita estiver maior
         {
-            return rotacao_avl_esquerda(v); // se a "subsubárvore" da direita estiver maior
+            return rotacao_avl_esquerda(v);
         }
         return rotacao_dupla_esquerda(v); // se a da esquerda for maior
     }
