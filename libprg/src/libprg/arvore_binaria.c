@@ -198,8 +198,53 @@ int fator_de_balanceamento(no_avl_t* v)
     return altura_arvore_avl(v->esquerda) - altura_arvore_avl(v->direita); // retorna a diferença do tamanho de cada lado
 }
 
-no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor) {
+no_avl_t* balancear_arvore_avl(no_avl_t* v)
+{
+    if (!v) return NULL; // se não tiver árvore, retorna nulo
 
+    v->altura = 1 + max(altura_arvore_avl(v->esquerda), altura_arvore_avl(v->direita)); // atualiza a altura
+
+    int fator = fator_de_balanceamento(v); // obtém o fator de balanceamento
+
+    // se a subárvore da esquerda for maior
+    if (fator > 1)
+    {
+        if (fator_de_balanceamento(v->esquerda) >= 0) // se a "subsubárvore" da esquerda estiver maior
+        {
+            return rotacao_avl_direita(v);
+        }
+        return rotacao_dupla_direita(v); // se a da direita estiver maior
+    }
+
+    // se a subárvore da direita for maior
+    if (fator < -1)
+    {
+        if (fator_de_balanceamento(v->direita) <= 0)
+        {
+            return rotacao_avl_esquerda(v); // se a "subsubárvore" da direita estiver maior
+        }
+        return rotacao_dupla_esquerda(v); // se a da esquerda for maior
+    }
+
+    return v; // retorna a árvore balanceada
+}
+
+no_avl_t* inserir_na_arvore_avl(no_avl_t* v,int valor)
+{
+    if (!v) return criar_arvore_avl(valor, 1); // se não tiver árvore, cria uma
+
+    if (valor < v->valor) // se tiver árvore e o valor for menor que o que temos,
+    {
+        v->esquerda = inserir_na_arvore_avl(v->esquerda, valor); // insere na subárvore da esquerda
+    } else if (valor > v->valor) // se for maior
+    {
+        v->direita = inserir_na_arvore_avl(v->direita, valor); // insere na subárvore da direita
+    } else // caso o valor já exista
+    {
+    return v; // retorna o nó existente
+    }
+
+    v->altura = 1 + max(altura_arvore_avl(v->esquerda), altura_arvore_avl(v->direita));
 }
 
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor) {
