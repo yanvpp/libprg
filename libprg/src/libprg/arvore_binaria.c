@@ -273,7 +273,7 @@ no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
     return balancear_arvore_avl(v);
 }
 
-no_avl_t* encontrar_valor_minimo_arvore_avl(no_avl_t* v)
+no_avl_t* encontrar_no_minimo_arvore_avl(no_avl_t* v)
 {
     no_avl_t* atual = v;
     while (atual && atual->esquerda)
@@ -317,7 +317,7 @@ no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor)
     }
     else
     {
-        no_avl_t* aux = encontrar_no_minimo_arvore(v->direita);
+        no_avl_t* aux = encontrar_no_minimo_arvore_avl(v->direita);
         v->valor = aux->valor;
         v->direita = remover_da_arvore_avl(v->direita, aux->valor);
     }
