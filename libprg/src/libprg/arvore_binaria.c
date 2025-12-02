@@ -169,24 +169,24 @@ void imprimir_arvore_em_pos_ordem(no_arvore* raiz)
     }
 }
 
-// void imprimir_arvore_por_niveis(no_arvore *raiz) {
-//
-//     fila_t* x = criar_fila();
-//
-//     while (raiz) {
-//         printf("%d\t", raiz->valor);
-//
-//         if (raiz->esquerda) {
-//             enfileirar(x, raiz->esquerda->valor);
-//         }
-//
-//         if (raiz->direita) {
-//             enfileirar(x, raiz->direita->valor);
-//         }
-//
-//         ;
-//     }
-// }
+void imprimir_arvore_por_lagura(no_arvore *x)
+{
+    fila_t* fila = criar_fila(pow(2, altura_arvore(x)));
+
+    while (x) {
+        printf("%d\t", x->valor);
+
+        if (x->esquerda) {
+            enfileirar(fila, x->esquerda->valor);
+        } else if (x->direita) {
+            enfileirar(fila, x->direita->valor);
+        }
+
+        desenfileirar(fila);
+    }
+
+    destruir_fila(fila);
+}
 
 // |------------------- ÁRVORE AVL ----------------------|
 
@@ -327,11 +327,23 @@ no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor)
     return balancear_arvore_avl(v);
 }
 
-void imprimir_arvore_avl_profundidade(no_avl_t* v)
+void imprimir_arvore_avl_em_pre_ordem(no_avl_t* v)
 {
 }
 
-void imprimir_arvore_avl_largura(no_avl_t* v)
+void imprimir_arvore_avl_em_ordem(no_avl_t* v)
+{
+}
+
+void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v)
+{
+}
+
+void imprimir_arvore_avl_pre_ordem(no_avl_t* v)
+{
+}
+
+void imprimir_arvore_avl_por_largura(no_avl_t* v)
 {
 }
 
