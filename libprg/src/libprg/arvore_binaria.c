@@ -270,7 +270,7 @@ no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
         return v; // retorna o nó existente
     }
 
-    return balancear_arvore_avl(v);
+    return balancear_arvore_avl(v); // balanceia a árvore antes de devolver
 }
 
 no_avl_t* encontrar_no_minimo_arvore_avl(no_avl_t* v)
@@ -329,14 +329,32 @@ no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor)
 
 void imprimir_arvore_avl_em_pre_ordem(no_avl_t* v)
 {
+    if (v)
+    {
+        printf("%d\t", v->valor);
+        imprimir_arvore_em_ordem(v->esquerda);
+        imprimir_arvore_em_ordem(v->direita);
+    }
 }
 
 void imprimir_arvore_avl_em_ordem(no_avl_t* v)
 {
+    if (v)
+    {
+        imprimir_arvore_em_ordem(v->esquerda);
+        printf("%d\t", v->valor);
+        imprimir_arvore_em_ordem(v->direita);
+    }
 }
 
 void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v)
 {
+    if (v)
+    {
+        imprimir_arvore_em_ordem(v->esquerda);
+        imprimir_arvore_em_ordem(v->direita);
+        printf("%d\t", v->valor);
+    }
 }
 
 void imprimir_arvore_avl_por_largura(no_avl_t* v)
