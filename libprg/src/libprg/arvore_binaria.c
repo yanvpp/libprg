@@ -339,10 +339,6 @@ void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v)
 {
 }
 
-void imprimir_arvore_avl_pre_ordem(no_avl_t* v)
-{
-}
-
 void imprimir_arvore_avl_por_largura(no_avl_t* v)
 {
 }
