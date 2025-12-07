@@ -146,7 +146,7 @@ typedef struct {
 } pessoa_t;
 
 typedef struct pessoa_t;
-typedef struct no no_t;
+typedef struct no no_dicionario_t;
 typedef struct dicionario dicionario_t;
 dicionario_t *criar_dicionario(int m);
 int hash(const char *chave, int m);

@@ -154,8 +154,8 @@ void imprimir_arvore_em_pre_ordem(no_arvore* raiz)
     if (raiz)
     {
         printf("%d\t", raiz->valor);
-        imprimir_arvore_em_ordem(raiz->esquerda);
-        imprimir_arvore_em_ordem(raiz->direita);
+        imprimir_arvore_em_pre_ordem(raiz->esquerda);
+        imprimir_arvore_em_pre_ordem(raiz->direita);
     }
 }
 
@@ -163,8 +163,8 @@ void imprimir_arvore_em_pos_ordem(no_arvore* raiz)
 {
     if (raiz)
     {
-        imprimir_arvore_em_ordem(raiz->esquerda);
-        imprimir_arvore_em_ordem(raiz->direita);
+        imprimir_arvore_em_pos_ordem(raiz->esquerda);
+        imprimir_arvore_em_pos_ordem(raiz->direita);
         printf("%d\t", raiz->valor);
     }
 }
@@ -332,8 +332,8 @@ void imprimir_arvore_avl_em_pre_ordem(no_avl_t* v)
     if (v)
     {
         printf("%d\t", v->valor);
-        imprimir_arvore_em_ordem(v->esquerda);
-        imprimir_arvore_em_ordem(v->direita);
+        imprimir_arvore_avl_em_pre_ordem(v->esquerda);
+        imprimir_arvore_avl_em_pre_ordem(v->direita);
     }
 }
 
@@ -341,9 +341,9 @@ void imprimir_arvore_avl_em_ordem(no_avl_t* v)
 {
     if (v)
     {
-        imprimir_arvore_em_ordem(v->esquerda);
+        imprimir_arvore_avl_em_ordem(v->esquerda);
         printf("%d\t", v->valor);
-        imprimir_arvore_em_ordem(v->direita);
+        imprimir_arvore_avl_em_ordem(v->direita);
     }
 }
 
@@ -351,57 +351,14 @@ void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v)
 {
     if (v)
     {
-        imprimir_arvore_em_ordem(v->esquerda);
-        imprimir_arvore_em_ordem(v->direita);
+        imprimir_arvore_avl_em_pos_ordem(v->esquerda);
+        imprimir_arvore_avl_em_pos_ordem(v->direita);
         printf("%d\t", v->valor);
     }
 }
 
 void imprimir_arvore_avl_por_largura(no_avl_t* v)
 {
-}
-
-no_avl_t* rotacao_avl_esquerda(no_avl_t* v)
-{
-    no_avl_t* u = v->direita;
-
-    v->direita = u->esquerda;
-    u->esquerda = v;
-
-    v->altura = max(v->esquerda->altura, v->direita->altura + 1);
-
-    u->altura = max(u->esquerda->altura, u->direita->altura + 1);
-
-    return u;
-}
-
-no_avl_t* rotacao_avl_direita(no_avl_t* v)
-{
-    no_avl_t* u = v->esquerda;
-
-    v->esquerda = u->direita;
-
-    u->direita = v;
-
-    v->altura = max(v->direita->altura, v->esquerda->altura + 1);
-
-    u->altura = max(u->direita->altura, u->esquerda->altura + 1);
-
-    return u;
-}
-
-no_avl_t* rotacao_dupla_direita(no_avl_t* v)
-{
-    v->esquerda = rotacao_avl_esquerda(v->esquerda);
-
-    return rotacao_avl_direita(v);
-}
-
-no_avl_t* rotacao_dupla_esquerda(no_avl_t* v)
-{
-    v->direita = rotacao_avl_direita(v->direita);
-
-    return rotacao_avl_esquerda(v);
 }
 
 void destruir_arvore_avl(no_avl_t* raiz)

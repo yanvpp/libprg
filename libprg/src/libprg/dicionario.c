@@ -11,7 +11,7 @@ typedef struct no {
     char *chave;
     pessoa_t *valor;
     struct no *prox;
-} no_t;
+} no_dicionario_t;
 
 typedef struct dicionario {
     int tamanho; // tamanho do vetor
