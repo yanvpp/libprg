@@ -169,16 +169,20 @@ void imprimir_arvore_em_pos_ordem(no_arvore* raiz)
     }
 }
 
-void imprimir_arvore_por_lagura(no_arvore *x)
+void imprimir_arvore_por_lagura(no_arvore* x)
 {
     fila_t* fila = criar_fila(pow(2, altura_arvore(x)));
 
-    while (x) {
+    while (x)
+    {
         printf("%d\t", x->valor);
 
-        if (x->esquerda) {
+        if (x->esquerda)
+        {
             enfileirar(fila, x->esquerda->valor);
-        } else if (x->direita) {
+        }
+        else if (x->direita)
+        {
             enfileirar(fila, x->direita->valor);
         }
 
