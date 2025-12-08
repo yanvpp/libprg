@@ -9,102 +9,104 @@
 
 typedef struct arvore_binaria
 {
-    int valor;
-    struct arvore_binaria* esquerda;
-    struct arvore_binaria* direita;
+    int valor; // valor armazenado
+    struct arvore_binaria* esquerda; // filho esquerdo do nó
+    struct arvore_binaria* direita; // filho direito do nó
 } no_arvore;
 
 no_arvore* criar_arvore(int valor)
 {
-    no_arvore* galho = malloc(sizeof(no_arvore));
-    galho->valor = valor;
-    galho->esquerda = galho->direita = NULL;
-    return galho;
+    no_arvore* galho = malloc(sizeof(no_arvore)); // aloca memória para armazenar novo nó
+    galho->valor = valor; // armazena o valor do novo nó
+    galho->esquerda = galho->direita = NULL; // aponta que o novo nó não terá filhos
+    return galho; // retorna o novo nó criado
 }
 
 void destruir_arvore(no_arvore* raiz)
 {
-    if (raiz)
+    if (raiz) // se tiver raiz
     {
-        destruir_arvore(raiz->esquerda);
-        destruir_arvore(raiz->direita);
-        free(raiz);
+        destruir_arvore(raiz->esquerda); // chama recursividade para liberar a memória dos nós da esquerda
+        destruir_arvore(raiz->direita); // o mesmo com os da direita
+        free(raiz); // libera a memória do nó raiz
     }
 }
 
 no_arvore* inserir_na_arvore(no_arvore* raiz, int valor)
 {
-    if (!raiz) return criar_arvore(valor);
-    if (valor < raiz->valor)
+    if (!raiz) return criar_arvore(valor); // se não existir árvore, cria uma
+    if (valor < raiz->valor) // se o valor for menor que a raiz
     {
-        raiz->esquerda = inserir_na_arvore(raiz->esquerda, valor);
+        raiz->esquerda = inserir_na_arvore(raiz->esquerda, valor); // insere na esquerda
     }
-    else if (valor > raiz->valor)
+    else if (valor > raiz->valor) // se for maior
     {
-        raiz->direita = inserir_na_arvore(raiz->direita, valor);
+        raiz->direita = inserir_na_arvore(raiz->direita, valor); // insere na direita
     }
-    return raiz;
+    return raiz; // retorna a raiz da árvore com o novo nó já adicionado
 }
 
 bool busca_na_arvore(no_arvore* raiz, int valor)
 {
-    if (!raiz) return false;
-    if (valor == raiz->valor) return true;
-    if (valor < raiz->valor) return busca_na_arvore(raiz->esquerda, valor);
-    return busca_na_arvore(raiz->direita, valor);
+    if (!raiz) return false; // se não existir árvore, retorna falso
+    if (valor == raiz->valor) return true; // se o valor do nó atual for igual ao que buscamos, retorna true
+    if (valor < raiz->valor) return busca_na_arvore(raiz->esquerda, valor); // se for menor, procura na esquerda
+    return busca_na_arvore(raiz->direita, valor); // se for maior, procura na direita
 }
 
 no_arvore* encontrar_no_minimo_arvore(no_arvore* raiz)
 {
-    no_arvore* atual = raiz;
+    no_arvore* atual = raiz; // cria um nó auxiliar para percorrer a árvore
 
-    while (atual && atual->esquerda)
+    while (atual && atual->esquerda) // enquanto existir o nó atual e ele tiver um filho na esquerda
     {
-        atual = atual->esquerda;
+        atual = atual->esquerda; // passa para a esquerda
     }
-    return atual;
+    return atual; // quando não tiver esquerda, significa que chegamos no nó mínimo, retornando ele
 }
 
 no_arvore* remover_valor_da_arvore(no_arvore* raiz, int valor)
 {
-    if (!raiz) return NULL;
+    if (!raiz) return NULL; // se não tiver raiz, retorna NULL
 
-    if (valor < raiz->valor)
+    if (valor < raiz->valor) // se o valor a ser removido for menor que o do nó atual
     {
-        raiz->esquerda = remover_valor_da_arvore(raiz->esquerda, valor);
+        raiz->esquerda = remover_valor_da_arvore(raiz->esquerda, valor); // procura na esquerda
     }
-    else if (valor > raiz->valor)
+    else if (valor > raiz->valor) // se for maior,
     {
-        raiz->direita = remover_valor_da_arvore(raiz->direita, valor);
+        raiz->direita = remover_valor_da_arvore(raiz->direita, valor); // procura na direita
     }
-    else
+    else // quando encontrar
     {
-        if (!raiz->esquerda)
+        if (!raiz->esquerda) // se não tiver um filho na esquerda
         {
-            no_arvore* aux = raiz->direita;
-            free(raiz);
-            return aux;
+            no_arvore* aux = raiz->direita; // armazena o valor da direita em um nó auxiliar
+            free(raiz); // libera o nó com o valor a ser removido
+            return aux; // adiciona o que estava na direita no lugar dele
         }
-        if (!raiz->direita)
+        if (!raiz->direita) // se não tiver raiz na direita
         {
-            no_arvore* aux = raiz->esquerda;
-            free(raiz);
-            return aux;
+            no_arvore* aux = raiz->esquerda; // armazena o valor da esquerda em um nó auxiliar
+            free(raiz); // libera o nó com o valor a ser removido
+            return aux; // adiciona o que estava na direita no lugar dele
         }
+
+        // caso não entre em nenhum caso
         no_arvore* auxiliar = encontrar_no_minimo_arvore(raiz->direita);
 
         raiz->valor = auxiliar->valor;
 
         raiz->direita = remover_valor_da_arvore(raiz->direita, auxiliar->valor);
     }
-    return raiz;
+    return raiz; // retorna a raiz da árvore com o elemento removido
 }
 
 int maior_valor_arvore(no_arvore* raiz)
 {
-    if (!raiz) return -1;
+    if (!raiz) return -1; // se não tiver árvore, retorna -1
 
-    no_arvore* atual = raiz;
+    no_arvore* atual = raiz; // armazena
 
     while (atual->direita)
     {
