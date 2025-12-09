@@ -177,7 +177,7 @@ void imprimir_arvore_em_pos_ordem(no_arvore* raiz)
     }
 }
 
-void imprimir_arvore_por_lagura(no_arvore* raiz)
+void imprimir_arvore_por_largura(no_arvore* raiz)
 {
     if (!raiz) return; // se não tiver árvore, retorna
 
