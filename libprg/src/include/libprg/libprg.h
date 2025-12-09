@@ -126,7 +126,7 @@ no_avl_t* criar_arvore_avl(int valor, int altura);
 void destruir_arvore_avl(no_avl_t* raiz);
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v,int valor);
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor);
-void imprimir_arvore_avl_pre_ordem(no_avl_t* v);
+void imprimir_arvore_avl_em_pre_ordem(no_avl_t* v);
 void imprimir_arvore_avl_em_ordem(no_avl_t* v);
 void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v);
 void imprimir_arvore_avl_por_largura(no_avl_t* v);
