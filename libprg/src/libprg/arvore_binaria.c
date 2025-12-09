@@ -435,8 +435,8 @@ void imprimir_arvore_avl_por_largura(no_avl_t* v)
 
         printf("%d\t", atual->valor); // imprime o valor do inicio da fila
 
-        if (v->esquerda) fila[fim++] = v->esquerda; // se tiver nó à esquerda, armazena ele na fila
-        if (v->direita) fila[fim++] = v->direita; // se tiver nó à direita, armazena ele na fila
+        if (v->esquerda) fila[fim++] = atual->esquerda; // se tiver nó à esquerda, armazena ele na fila
+        if (v->direita) fila[fim++] = atual->direita; // se tiver nó à direita, armazena ele na fila
     }
 
     free(fila); // libera a memória alocada para a fila
