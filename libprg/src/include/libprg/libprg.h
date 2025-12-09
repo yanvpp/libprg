@@ -113,10 +113,11 @@ no_arvore *remover_valor_da_arvore(no_arvore *raiz, int valor);
 int maior_valor_arvore(no_arvore *raiz);
 int menor_valor_arvore(no_arvore *raiz);
 int altura_arvore(no_arvore *raiz);
+int tamanho_arvore(no_arvore* raiz);
 void imprimir_arvore_em_ordem(no_arvore *raiz);
 void imprimir_arvore_em_pre_ordem(no_arvore *raiz);
 void imprimir_arvore_em_pos_ordem(no_arvore *raiz);
-// void imprimir_arvore_por_niveis(no_arvore *raiz);
+void imprimir_arvore_por_largura(no_arvore *raiz);
 
 // |-- ÁRVORE AVL --|
 
@@ -130,6 +131,7 @@ void imprimir_arvore_avl_em_ordem(no_avl_t* v);
 void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v);
 void imprimir_arvore_avl_por_largura(no_avl_t* v);
 int altura_arvore_avl(no_avl_t* v);
+int tamanho_arvore_avl(no_avl_t* v);
 int fator_de_balanceamento(no_avl_t* v);
 no_avl_t* balancear_arvore_avl(no_avl_t* v);
 no_avl_t* rotacao_avl_esquerda(no_avl_t* v);

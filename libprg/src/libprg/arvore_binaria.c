@@ -141,6 +141,12 @@ int altura_arvore(no_arvore* raiz)
     return altura_esquerda + 1;
 }
 
+int tamanho_arvore(no_arvore* raiz)
+{
+    if (!raiz) return 0; // se não tiver árvore, retorna tamanho 0
+    return 1 + tamanho_arvore(raiz->esquerda) + tamanho_arvore(raiz->direita); // caso contrário, conta os nós
+}
+
 void imprimir_arvore_em_ordem(no_arvore* raiz)
 {
     if (raiz)
@@ -171,27 +177,30 @@ void imprimir_arvore_em_pos_ordem(no_arvore* raiz)
     }
 }
 
-void imprimir_arvore_por_lagura(no_arvore* x)
+void imprimir_arvore_por_lagura(no_arvore* raiz)
 {
-    fila_t* fila = criar_fila(pow(2, altura_arvore(x)));
+    if (!raiz) return; // se não tiver árvore, retorna
 
-    while (x)
+    int capacidade = tamanho_arvore(raiz); // quantidade de nós da árvore
+
+    no_arvore** fila = malloc(capacidade * sizeof(no_arvore*)); // fila para armazenar os nós
+
+    int inicio = 0, fim = 0; // auxiliares para percorrer a fila
+
+    fila[fim++] = raiz; // coloca a raiz no fim da fila e depois incrementa 1 no fim
+    // mesmo que fila[fim] = raiz; fim++
+
+    while (inicio < fim) // enquanto ainda tiverem nós na fila
     {
-        printf("%d\t", x->valor);
+        no_arvore* atual = fila[inicio++]; // armazena o valor que está no inicio da fila e incrementa 1 no início
 
-        if (x->esquerda)
-        {
-            enfileirar(fila, x->esquerda->valor);
-        }
-        else if (x->direita)
-        {
-            enfileirar(fila, x->direita->valor);
-        }
+        printf("%d\t", atual->valor); // imprime o valor do inicio da fila
 
-        desenfileirar(fila);
+        if (raiz->esquerda) fila[fim++] = raiz->esquerda; // se tiver nó à esquerda, armazena ele na fila
+        if (raiz->direita) fila[fim++] = raiz->direita; // se tiver nó à direita, armazena ele na fila
     }
 
-    destruir_fila(fila);
+    free(fila); // libera a memória alocada para a fila
 }
 
 // |------------------- ÁRVORE AVL ----------------------|
@@ -220,6 +229,12 @@ int altura_arvore_avl(no_avl_t* v)
 {
     if (!v) return 0; // se a árvore estiver vazia, retorna tamanho 0
     return v->altura; // caso contrário, retorna a altura
+}
+
+int tamanho_arvore_avl(no_avl_t* v)
+{
+    if (!v) return 0; // se não tiver árvore, retorna tamanho 0
+    return 1 + tamanho_arvore_avl(v->esquerda) + tamanho_arvore_avl(v->direita); // caso contrário, conta os nós
 }
 
 int fator_de_balanceamento(no_avl_t* v)
@@ -365,6 +380,28 @@ void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v)
 
 void imprimir_arvore_avl_por_largura(no_avl_t* v)
 {
+    if (!v) return; // se não tiver árvore, retorna
+
+    int capacidade = tamanho_arvore_avl(v); // quantidade de nós da árvore
+
+    no_avl_t** fila = malloc(capacidade * sizeof(no_arvore*)); // fila para armazenar os nós
+
+    int inicio = 0, fim = 0; // auxiliares para percorrer a fila
+
+    fila[fim++] = v; // coloca a raiz no fim da fila e depois incrementa 1 no fim
+    // mesmo que fila[fim] = raiz; fim++
+
+    while (inicio < fim) // enquanto ainda tiverem nós na fila
+    {
+        no_avl_t* atual = fila[inicio++]; // armazena o valor que está no inicio da fila e incrementa 1 no início
+
+        printf("%d\t", atual->valor); // imprime o valor do inicio da fila
+
+        if (v->esquerda) fila[fim++] = v->esquerda; // se tiver nó à esquerda, armazena ele na fila
+        if (v->direita) fila[fim++] = v->direita; // se tiver nó à direita, armazena ele na fila
+    }
+
+    free(fila); // libera a memória alocada para a fila
 }
 
 void destruir_arvore_avl(no_avl_t* raiz)
