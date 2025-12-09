@@ -196,8 +196,8 @@ void imprimir_arvore_por_largura(no_arvore* raiz)
 
         printf("%d\t", atual->valor); // imprime o valor do inicio da fila
 
-        if (raiz->esquerda) fila[fim++] = raiz->esquerda; // se tiver nó à esquerda, armazena ele na fila
-        if (raiz->direita) fila[fim++] = raiz->direita; // se tiver nó à direita, armazena ele na fila
+        if (atual->esquerda) fila[fim++] = atual->esquerda; // se tiver nó à esquerda, armazena ele na fila
+        if (atual->direita) fila[fim++] = atual->direita; // se tiver nó à direita, armazena ele na fila
     }
 
     free(fila); // libera a memória alocada para a fila
