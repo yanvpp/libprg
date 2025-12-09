@@ -225,6 +225,46 @@ no_avl_t* criar_arvore_avl(int valor, int altura)
     return u;
 }
 
+no_avl_t* rotacao_avl_esquerda(no_avl_t* v)
+{
+    no_avl_t* u = v->direita;
+    no_avl_t* t2 = u->esquerda;
+
+    u->esquerda = v;
+    v->direita = t2;
+
+    v->altura = 1 + max(altura_arvore_avl(v->esquerda), altura_arvore_avl(v->direita));
+    u->altura = 1 + max(altura_arvore_avl(u->esquerda), altura_arvore_avl(u->direita));
+
+    return u;
+}
+
+no_avl_t* rotacao_avl_direita(no_avl_t* v)
+{
+    no_avl_t* u = v->esquerda;
+    no_avl_t* t2 = u->direita;
+
+    u->direita = v;
+    v->esquerda = t2;
+
+    v->altura = 1 + max(altura_arvore_avl(v->esquerda), altura_arvore_avl(v->direita));
+    u->altura = 1 + max(altura_arvore_avl(u->esquerda), altura_arvore_avl(u->direita));
+
+    return u;
+}
+
+no_avl_t* rotacao_dupla_direita(no_avl_t* v)
+{
+    v->esquerda = rotacao_avl_esquerda(v->esquerda);
+    return rotacao_avl_direita(v);
+}
+
+no_avl_t* rotacao_dupla_esquerda(no_avl_t* v)
+{
+    v->direita = rotacao_avl_direita(v->direita);
+    return rotacao_avl_esquerda(v);
+}
+
 int altura_arvore_avl(no_avl_t* v)
 {
     if (!v) return 0; // se a árvore estiver vazia, retorna tamanho 0
