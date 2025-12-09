@@ -356,18 +356,18 @@ no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor)
     {
         v->direita = remover_da_arvore_avl(v->direita, valor);
     }
-
-    if (!v->esquerda || !v->direita)
+    else
     {
-        no_avl_t* aux = v->esquerda ? v->esquerda : v->direita;
+        if (!v->esquerda || !v->direita)
+        {
+            no_avl_t* aux = v->esquerda ? v->esquerda : v->direita;
 
-        if (!aux)
-        {
-            aux = v;
-            v = NULL;
-        }
-        else
-        {
+            if (!aux)
+            {
+                free(v); // libera a memória do nó atual
+                return NULL;
+            }
+
             v->valor = aux->valor;
             v->esquerda = aux->esquerda;
             v->direita = aux->direita;
@@ -375,15 +375,13 @@ no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor)
 
             free(aux);
         }
+        else
+        {
+            no_avl_t* aux = encontrar_no_minimo_arvore_avl(v->direita);
+            v->valor = aux->valor;
+            v->direita = remover_da_arvore_avl(v->direita, aux->valor);
+        }
     }
-    else
-    {
-        no_avl_t* aux = encontrar_no_minimo_arvore_avl(v->direita);
-        v->valor = aux->valor;
-        v->direita = remover_da_arvore_avl(v->direita, aux->valor);
-    }
-
-    if (!v) return NULL;
 
     return balancear_arvore_avl(v);
 }
