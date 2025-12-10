@@ -106,39 +106,39 @@ int maior_valor_arvore(no_arvore* raiz)
 {
     if (!raiz) return -1; // se não tiver árvore, retorna -1
 
-    no_arvore* atual = raiz; // armazena
+    no_arvore* atual = raiz; // variável para percorrer a árvore
 
-    while (atual->direita)
+    while (atual->direita) // enquanto tiver um filho à direita
     {
-        atual = atual->direita;
+        atual = atual->direita; // passa para a direita
     }
 
-    return atual->valor;
+    return atual->valor; // retorna o maior valor da árvore (extrema direita)
 }
 
 int menor_valor_arvore(no_arvore* raiz)
 {
-    if (!raiz) return -1;
+    if (!raiz) return -1; // se não tiver árvore, retorna -1
 
-    no_arvore* atual = raiz;
+    no_arvore* atual = raiz; // variável para percorrer a árvore
 
-    while (atual->esquerda)
+    while (atual->esquerda) // enquanto o nó tiver um filho à esquerda
     {
-        atual = atual->esquerda;
+        atual = atual->esquerda; // passa para a esquerda
     }
 
-    return atual->valor;
+    return atual->valor; // retorna o menor valor (extrema esquerda)
 }
 
 int altura_arvore(no_arvore* raiz)
 {
-    if (!raiz) return -1;
+    if (!raiz) return -1; // se não tiver árvore, retorna -1
 
-    int altura_esquerda = altura_arvore(raiz->esquerda);
-    int altura_direita = altura_arvore(raiz->direita);
+    int altura_esquerda = altura_arvore(raiz->esquerda); // para percorrer pela esquerda
+    int altura_direita = altura_arvore(raiz->direita); // para percorrer pela direita
 
-    if (altura_direita > altura_esquerda) return altura_direita + 1;
-    return altura_esquerda + 1;
+    if (altura_direita > altura_esquerda) return altura_direita + 1; // retorna a altura da árvore
+    return altura_esquerda + 1; // retorna a altura da árvore
 }
 
 int tamanho_arvore(no_arvore* raiz)
@@ -149,21 +149,21 @@ int tamanho_arvore(no_arvore* raiz)
 
 void imprimir_arvore_em_ordem(no_arvore* raiz)
 {
-    if (raiz)
+    if (raiz) // se tiver árvore
     {
-        imprimir_arvore_em_ordem(raiz->esquerda);
-        printf("%d\t", raiz->valor);
-        imprimir_arvore_em_ordem(raiz->direita);
+        imprimir_arvore_em_ordem(raiz->esquerda); // recursividade para imprimir a esquerda da árvore
+        printf("%d\t", raiz->valor); // imprime o valor na tela
+        imprimir_arvore_em_ordem(raiz->direita); // recursividade para imprimir a direita da árvore
     }
 }
 
 void imprimir_arvore_em_pre_ordem(no_arvore* raiz)
 {
-    if (raiz)
+    if (raiz) // se tiver árvore
     {
-        printf("%d\t", raiz->valor);
-        imprimir_arvore_em_pre_ordem(raiz->esquerda);
-        imprimir_arvore_em_pre_ordem(raiz->direita);
+        printf("%d\t", raiz->valor); // imprime o valor na tela
+        imprimir_arvore_em_pre_ordem(raiz->esquerda); // recursividade para imprimir a esquerda da árvore
+        imprimir_arvore_em_pre_ordem(raiz->direita); // recursividade para imprimir a direita da árvore
     }
 }
 
@@ -171,9 +171,9 @@ void imprimir_arvore_em_pos_ordem(no_arvore* raiz)
 {
     if (raiz)
     {
-        imprimir_arvore_em_pos_ordem(raiz->esquerda);
-        imprimir_arvore_em_pos_ordem(raiz->direita);
-        printf("%d\t", raiz->valor);
+        imprimir_arvore_em_pos_ordem(raiz->esquerda); // recursividade para imprimir a esquerda da árvore
+        imprimir_arvore_em_pos_ordem(raiz->direita); // recursividade para imprimir a direita da árvore
+        printf("%d\t", raiz->valor); // imprime o valor na tela
     }
 }
 
@@ -209,20 +209,20 @@ void imprimir_arvore_por_largura(no_arvore* raiz)
 
 typedef struct arvore_avl_t
 {
-    int valor;
-    int altura;
-    struct arvore_avl_t* esquerda;
-    struct arvore_avl_t* direita;
+    int valor; // valor armazenado no nó
+    int altura; // altura da árvore
+    struct arvore_avl_t* esquerda; // cria uma ramificação à esquerda da raiz
+    struct arvore_avl_t* direita; // cria uma ramificação à direita da raiz
 } no_avl_t;
 
-no_avl_t* criar_arvore_avl(int valor, int altura)
+no_avl_t* criar_arvore_avl(int valor)
 {
-    no_avl_t* u = malloc(sizeof(no_avl_t));
-    u->valor = valor;
-    u->altura = altura;
-    u->esquerda = NULL;
-    u->direita = NULL;
-    return u;
+    no_avl_t* u = malloc(sizeof(no_avl_t)); // aloca memória para o nó
+    u->valor = valor; // armazena o valor recebido como raiz
+    u->altura = 1; // como é a raiz, define a altura como 1
+    u->esquerda = NULL; // a esquerda "não existe"
+    u->direita = NULL; // a direita "não existe"
+    return u; // retorna o nó criado
 }
 
 no_avl_t* rotacao_avl_esquerda(no_avl_t* v)
@@ -316,7 +316,7 @@ no_avl_t* balancear_arvore_avl(no_avl_t* v)
 
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
 {
-    if (!v) return criar_arvore_avl(valor, 1); // se não tiver árvore, cria uma
+    if (!v) return criar_arvore_avl(valor); // se não tiver árvore, cria uma
 
     if (valor < v->valor) // se tiver árvore e o valor for menor que o que temos,
     {
@@ -336,39 +336,40 @@ no_avl_t* inserir_na_arvore_avl(no_avl_t* v, int valor)
 
 no_avl_t* encontrar_no_minimo_arvore_avl(no_avl_t* v)
 {
-    no_avl_t* atual = v;
-    while (atual && atual->esquerda)
+    no_avl_t* atual = v; // variável para percorrer a árvore
+
+    while (atual->esquerda) // enquanto o nó tiver um filho à esquerda
     {
-        atual = atual->esquerda;
+        atual = atual->esquerda; // passa para a esquerda
     }
-    return atual;
+    return atual; // retorna o valor mínimo encontrado (extrema esquerda)
 }
 
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor)
 {
-    if (!v) return NULL;
+    if (!v) return NULL; // se não tiver árvore, não faz nada
 
-    if (valor < v->valor)
+    if (valor < v->valor) // se o valor no nó for menor que o valor a ser removido
     {
-        v->esquerda = remover_da_arvore_avl(v->esquerda, valor);
+        v->esquerda = remover_da_arvore_avl(v->esquerda, valor); // procura até encontrar o nó correto à esquerda
     }
-    else if (valor > v->valor)
+    else if (valor > v->valor) // caso seja maior
     {
-        v->direita = remover_da_arvore_avl(v->direita, valor);
+        v->direita = remover_da_arvore_avl(v->direita, valor); // procura até encontrar o nó correto à direita
     }
-    else
+    else // caso seja igual
     {
-        if (!v->esquerda || !v->direita)
+        if (!v->esquerda || !v->direita) // se não tiver filhos
         {
-            no_avl_t* aux = v->esquerda ? v->esquerda : v->direita;
+            no_avl_t* aux = v->esquerda ? v->esquerda : v->direita; //
 
-            if (!aux)
+            if (!aux) // se o auxiliar for nulo
             {
                 free(v); // libera a memória do nó atual
-                return NULL;
+                return NULL; // retorna nulo
             }
 
-            v->valor = aux->valor;
+            v->valor = aux->valor; //
             v->esquerda = aux->esquerda;
             v->direita = aux->direita;
             v->altura = aux->altura;
@@ -390,9 +391,9 @@ void imprimir_arvore_avl_em_pre_ordem(no_avl_t* v)
 {
     if (v)
     {
-        printf("%d\t", v->valor);
-        imprimir_arvore_avl_em_pre_ordem(v->esquerda);
-        imprimir_arvore_avl_em_pre_ordem(v->direita);
+        printf("%d\t", v->valor); // imprime o valor na tela
+        imprimir_arvore_avl_em_pre_ordem(v->esquerda); // recursividade para a esquerda da árvore
+        imprimir_arvore_avl_em_pre_ordem(v->direita); // recursividade para a direita da árvore
     }
 }
 
@@ -400,9 +401,9 @@ void imprimir_arvore_avl_em_ordem(no_avl_t* v)
 {
     if (v)
     {
-        imprimir_arvore_avl_em_ordem(v->esquerda);
-        printf("%d\t", v->valor);
-        imprimir_arvore_avl_em_ordem(v->direita);
+        imprimir_arvore_avl_em_ordem(v->esquerda); // recursividade para a esquerda da árvore
+        printf("%d\t", v->valor); // imprime o valor na tela
+        imprimir_arvore_avl_em_ordem(v->direita); // recursividade para a direita da árvore
     }
 }
 
@@ -410,9 +411,9 @@ void imprimir_arvore_avl_em_pos_ordem(no_avl_t* v)
 {
     if (v)
     {
-        imprimir_arvore_avl_em_pos_ordem(v->esquerda);
-        imprimir_arvore_avl_em_pos_ordem(v->direita);
-        printf("%d\t", v->valor);
+        imprimir_arvore_avl_em_pos_ordem(v->esquerda); // recursividade para a esquerda da árvore
+        imprimir_arvore_avl_em_pos_ordem(v->direita);  // recursividade para a direita da árvore
+        printf("%d\t", v->valor); // imprime o valor na tela
     }
 }
 
@@ -444,10 +445,10 @@ void imprimir_arvore_avl_por_largura(no_avl_t* v)
 
 void destruir_arvore_avl(no_avl_t* raiz)
 {
-    if (raiz)
+    if (raiz) // se tiver árvore
     {
-        destruir_arvore_avl(raiz->esquerda);
-        destruir_arvore_avl(raiz->direita);
-        free(raiz);
+        destruir_arvore_avl(raiz->esquerda); // destrói a parte esquerda da árvore
+        destruir_arvore_avl(raiz->direita); // destrói a parte direita da árvore
+        free(raiz); // libera a memória alocada para a raiz
     }
 }
