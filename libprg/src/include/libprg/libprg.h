@@ -122,7 +122,7 @@ void imprimir_arvore_por_largura(no_arvore *raiz);
 // |-- ÁRVORE AVL --|
 
 typedef struct arvore_avl_t no_avl_t;
-no_avl_t* criar_arvore_avl(int valor, int altura);
+no_avl_t* criar_arvore_avl(int valor);
 void destruir_arvore_avl(no_avl_t* raiz);
 no_avl_t* inserir_na_arvore_avl(no_avl_t* v,int valor);
 no_avl_t* remover_da_arvore_avl(no_avl_t* v, int valor);
